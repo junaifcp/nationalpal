@@ -1,0 +1,9 @@
+
+Form validation(for all forms).
+Error handling proper.
+Add and check all the links.
+Block delete functions in admin
+
+
+
+
