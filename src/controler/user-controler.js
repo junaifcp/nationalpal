@@ -59,8 +59,8 @@ exports.showAllMembers=async(req,res)=>{
         const pageTotal=members.totalPages
         res.render('users/user-list',{client:true,members,pageTotal});
       } 
-  } catch (error) {
-    console.log(error+"message");
+  } catch (err) {
+    res.render('404',{error:true,err})
   }
 }
 exports.showAllMembersPost=async(req,res)=>{
@@ -83,8 +83,8 @@ exports.showAllMembersPost=async(req,res)=>{
         const pageTotal=members.totalPages
         res.render('users/user-list',{client:true,members,pageTotal});
       } 
-  } catch (error) {
-    console.log(error+"message");
+  } catch (err) {
+    res.render('404',{error:true,err})
   }
 }
 //login main page route here<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -147,16 +147,16 @@ exports.signupUser=async(req,res)=>{
          })
          const number=req.body.touristPhone;
          req.session.number=req.body.touristPhone;
-         console.log(OTP);
+         
         
-        //  var options = {authorization : 'bDfhyk2JsVuMAN9XSpxi6nLvKd0wztZaeUrFCQ3BR15lTPg7qjX9Niwx1y3VMRS0PKHnZU6LutrGQmvW' , message : `Otp for login to My tour mate is ${OTP}` ,  numbers : [`${number}`]} 
-        //  fast2sms.sendMessage(options);
+         var options = {authorization : 'bDfhyk2JsVuMAN9XSpxi6nLvKd0wztZaeUrFCQ3BR15lTPg7qjX9Niwx1y3VMRS0PKHnZU6LutrGQmvW' , message : `Otp for login to My tour mate is ${OTP}` ,  numbers : [`${number}`]} 
+         fast2sms.sendMessage(options);
 
          const otp=new Otp({number:number,otp:OTP});
          const salt=await bcrypt.genSalt(10);
          otp.otp=await bcrypt.hash(otp.otp,salt);
          const result=await otp.save();
-         console.log(result+" the result");
+        //  console.log(result+" the result");
          const token =await userList.generateAuthToken();
         //  console.log(token);
         //store cookies while signup in user browser
@@ -183,20 +183,20 @@ exports.signupUser=async(req,res)=>{
     })
     if(otpHolder.length===0) return res.render('users/thankYou',{message:"You are using an expired OTP"})
     const rightOtpFind=otpHolder[otpHolder.length-1]
-    console.log("right otp find"+rightOtpFind);
+    // console.log("right otp find"+rightOtpFind);
     const validUser=await bcrypt.compare(req.body.otp,rightOtpFind.otp);
-    console.log(validUser);
+    // console.log(validUser);
     if(rightOtpFind.number===req.session.number&&validUser){
-      console.log(req.body);
+      // console.log(req.body);
       const user=new User(_.pick(req.body,["touristPhone"]));
-      console.log(user);
+      // console.log(user);
       const token=await user.generateJWT();
-      console.log(token+"   token");
+      // console.log(token+"   token");
       //store cookies after enter otp in user browser
       res.cookie("jwtOtp", token,{
         httpOnly:true
       });
-      console.log(token);
+      // console.log(token);
       // const result=await user.save();
       const OTPDelete=await Otp.deleteMany({
         number:rightOtpFind.number
@@ -205,8 +205,8 @@ exports.signupUser=async(req,res)=>{
     }else{
       return res.status(400).send("your otp was wrong")
     }
-    } catch (error) {
-      console.log(error+" the errorr");
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
     
   }
@@ -251,12 +251,12 @@ exports.signupUser=async(req,res)=>{
     const _id=users._id;
     if(users.wishList){
       const wishArray=users.wishList;
-    console.log(users.wishList);
+    // console.log(users.wishList);
     const wishList=wishArray.map(function(element){
       return element.destination
     })
     const members=await Member.find({destination:{$in:wishList}}).lean()
-    console.log(members+"thisss");
+    // console.log(members+"thisss");
     res.render('users/dashboard',{memberStyle:true,users,members})
     }else{
       res.render('users/dashboard',{memberStyle:true,users})
@@ -309,7 +309,7 @@ exports.signupUser=async(req,res)=>{
           bio:updations.bio
       }
   },{upsert:true});
-     console.log(req.body);
+    //  console.log(req.body);
      res.redirect('/dashboard')
   }
   exports.addWishlist=async(req,res)=>{
@@ -351,17 +351,17 @@ exports.signupUser=async(req,res)=>{
         }
       })
      
-      console.log(user);
+      // console.log(user);
       res.redirect('/dashboard')
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
   }
   exports.findGuide=async (req,res)=>{
     const users=req.user.toJSON()
     const _id=users._id;
     const wishArray=users.wishList;
-    console.log(users.wishList);
+    // console.log(users.wishList);
     const wishList=wishArray.map(function(element){
       return element.destination
     })
@@ -455,7 +455,7 @@ exports.signupUser=async(req,res)=>{
     const limit=parseInt(req.query.limit,10)||6;
     const page=parseInt(req.query.page,10)||1;
     let postsPage= await Post.paginate({},{limit,page,sort:{createdAt:-1},lean:true})
-    console.log(postsPage);
+  
   
     const pageTotal=postsPage.totalPages
     let posts;
@@ -485,8 +485,8 @@ exports.signupUser=async(req,res)=>{
       }else{
         res.render('landing/blog',{client:true,latest,postsPage,pageTotal,blogLat:true});
       } 
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
   }
   exports.contact=(req,res)=>{
@@ -522,8 +522,8 @@ exports.signupUser=async(req,res)=>{
       }else{
         res.render('landing/blog-single',{post,author,client:true,category,recent})
       } 
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
   }
   exports.contactPost=async(req,res)=>{
@@ -564,8 +564,8 @@ exports.signupUser=async(req,res)=>{
           res.render('landing/contact',{client:true,message});
         } 
       }
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
 
     
@@ -585,7 +585,7 @@ exports.signupUser=async(req,res)=>{
         response.checkin=date2
         response.checkout=date1
       
-        console.log(response);
+        
         memberHelper.hotelId(response).then((hotels)=>{
           if(user){
             let users=req.user.toJSON();
@@ -600,8 +600,8 @@ exports.signupUser=async(req,res)=>{
         })
       })
      })
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
    
   }
@@ -616,7 +616,7 @@ exports.signupUser=async(req,res)=>{
           const hotelImg=response.filter((value,index)=>{
             return index<9;
           })
-         console.log(hotelImg);
+         
           memberHelper.hotelDesc(hotel_id).then((response)=>{
             const hotelDesc=response;
             
@@ -688,7 +688,7 @@ exports.signupUser=async(req,res)=>{
       }
       transporter.sendMail(options,function(err,info){
         if(err){
-          console.log(err);
+          res.render('404',{error:true,err})
           return
         }else{
           console.log("emailsend successfully");
@@ -697,8 +697,8 @@ exports.signupUser=async(req,res)=>{
       })
       console.log(link);
       res.render('users/password-thankyou',{thankYou:true,email})
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      res.render('404',{error:true,err})
     }
     }else if(member){    
          //make sure user exists in db
@@ -802,8 +802,8 @@ exports.signupUser=async(req,res)=>{
   }
   //we can simply find the user with the payload email and update with new password
   res.render('users/loginMain',{client:true,loginmain:true,message:"Password updated successfully plese login with your new credentials"})
-   } catch (error) {
-     console.log(error);
+   } catch (err) {
+    res.render('404',{error:true,err})
      res.send("error exists")
    }
 

@@ -27,13 +27,13 @@
                       </span>
                       <div class="comment-footer">
                         <span class="text-muted float-end">{{date createdAt}}</span>
-                      {{#if users.blockStatus}}
+                      {{#if blockStatus}}
                         <a href="/admin/dashboard/block-user/{{this._id}}">
                         <button id="userbtn"
                           type="button"
                           class="btn btn-warning btn-sm text-white"
                         >
-                          Block
+                          Unblock
                         </button></a>
                         {{else}}
                        
@@ -42,7 +42,7 @@
                           type="button"
                           class="btn btn-warning btn-sm text-white"
                         >
-                          Unblock
+                        Block
                         </button></a>
                       {{/if}}
                         <a href="/admin/dashboard/delete-user/{{this._id}}" onclick="return confirm('Are you sure to delete {{this.Name}}')">

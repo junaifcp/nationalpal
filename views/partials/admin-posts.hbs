@@ -6,7 +6,7 @@
   <div class="comment-widgets scrollable" style="max-height: 430px">
     {{#each posts}}
     <div class="">
-      <a href="" class=""><button type="button"
+      <a  href="/admin/dashboard/delete-post/{{this._id}}" onclick="return confirm('Are you sure to delete {{this.Name}}')"><button type="button"
           class="btn btn-danger btn-sm text-white rounded-5 rounded-top">Delete</button></a>
     </div>
     <div class="card mb-3" style="max-width: 540px;">

@@ -84,7 +84,14 @@ router.post('/contact',auth,[
 router.post('/hotel',auth,controler.destinationPost)
 router.get('/hotel-single/:id',auth,controler.hotelSingle)
 router.get('/contact/:id',auth,memberControler.contactProfile)
-router.post('/contact/:id',auth,memberControler.contactProfilePost)
+router.post('/contact/:id',auth,[
+    check('name','Name must be minimom of three letters')
+    .exists()
+    .isLength({min:3}),
+    check('email','Your email must be a valid email')
+    .isEmail()
+    .normalizeEmail()
+],memberControler.contactProfilePost)
 
 //password reset
 router.get('/password-reset',controler.passwordReset)

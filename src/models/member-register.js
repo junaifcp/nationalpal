@@ -78,6 +78,12 @@ const { date } = require('joi');
         type:String,
       
     },
+    offer:{
+        type:String
+    },
+    region:{
+        type:String
+    },
     languages:{
         type:String
     },
@@ -101,6 +107,10 @@ const { date } = require('joi');
     postCount:{
         type:Number,
         default:0
+    },
+    blockStatus:{
+        type:Boolean,
+        default:false
     },
     queries:[
         {

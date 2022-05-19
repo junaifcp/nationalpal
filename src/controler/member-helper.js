@@ -14,6 +14,7 @@ const memberHelper=require('../../src/controler/member-functions')
 const Razorpay=require('razorpay')
 const nodemailer=require('nodemailer')
 const Categories=require('../../src/models/category')
+const {check,validationResult}=require('express-validator')
 // loading posts for pagination
 // instance of razorpay
 var instance = new Razorpay({
@@ -117,10 +118,14 @@ exports.dashboard=async function(req, res, next) {
         // const users=await Member.findById({_id:member._id},{tokens:0,socialLinks:0});
         const users=req.user.toJSON();
         const username=users.userName;
-        const posts=await Post.find({username}).lean()
-  
+        const posts=await Post.find({username}).lean();
+        let message;
+        if(req.session.addPost){
+          message="Your post added successfully..."
+        }
         //   profile=await profile.toJSON();
-        res.render('members/dashboard',{member:true,posts,memberStyle:true,users});
+        req.session.addPost=false;
+        res.render('members/dashboard',{member:true,posts,memberStyle:true,users,message});
     } catch (e) {
         console.log("error occured while loading dashboard"+e);
     }
@@ -204,24 +209,40 @@ exports.editSocialPost=async(req,res,next)=>{
   }
   exports.contactProfilePost=async(req,res)=>{
       try {
+        const errors=validationResult(req)
         let user=req.cookies.jwt;
         let guide=req.cookies.memberLoginJwt;
         const _id=req.params.id;
         const userApi=await Member.findOne({_id}).lean();
-        const updated=await Member.updateOne({_id},{
-            $push:{
-                queries:[req.body]
-            }
-        })
-        if(user){
-            let users=req.user.toJSON();
-          res.render('members/member',{memberStyle:true,users,client:true,userApi,contact:true})
-        }else if(guide){
-            let users=req.user.toJSON();
-          res.render('members/member',{memberStyle:true,users,member:true,userApi,contact:true})
-        }else{
-          res.render('members/member',{memberStyle:true,client:true,contact:true,userApi});
-        } 
+        if(!errors.isEmpty()){
+            const alert=errors.array()
+            if(user){
+              let users=req.user.toJSON();
+              res.render('members/member',{memberStyle:true,users,client:true,userApi,contact:true,alert})
+            }else if(guide){
+              let users=req.user.toJSON();
+              res.render('members/member',{memberStyle:true,users,member:true,userApi,contact:true,alert})
+            }else{
+              res.render('members/member',{memberStyle:true,client:true,contact:true,userApi,alert});
+            } 
+          }else{
+
+              const updated=await Member.updateOne({_id},{
+                  $push:{
+                      queries:[req.body]
+                  }
+              })
+              const message="Form submitted successfully... We will be in touch with you soon"
+              if(user){
+                  let users=req.user.toJSON();
+                res.render('members/member',{memberStyle:true,users,client:true,userApi,contact:true,message})
+              }else if(guide){
+                  let users=req.user.toJSON();
+                res.render('members/member',{memberStyle:true,users,member:true,userApi,contact:true,message})
+              }else{
+                res.render('members/member',{memberStyle:true,client:true,contact:true,userApi,message});
+              } 
+          }
         
       } catch (err) {
         res.render('404',{error:true,err})
@@ -234,6 +255,7 @@ exports.editSocialPost=async(req,res,next)=>{
         let user=req.cookies.jwt;
         let guide=req.cookies.memberLoginJwt;
         const categories=await Categories.find().lean()
+        req.session.addPost=true
         if(user){
           let users=req.user.toJSON();
           res.render('members/add-post',{client:true,memberStyle:true,users,contact:true,categories})
@@ -266,6 +288,7 @@ exports.editSocialPost=async(req,res,next)=>{
                }
            });
         //    const toPost=await member.toPostConcat();
+        
            res.redirect("/members/dashboard")
            
        } catch (err) {
@@ -429,7 +452,9 @@ exports.amount=async(req,res)=>{
             amountPay:req.body.amountPay
         }
     })
-    res.render('members/payments',{memberStyle:true,userApi,member:true})
+    // res.redirect('/dashboard/payments')
+    const message="Your amount has been added successfully"
+    res.render('members/payments',{memberStyle:true,userApi,member:true,message})
 }
 exports.bankDetails=async(req,res)=>{
   try {
@@ -454,9 +479,12 @@ exports.bankDetails=async(req,res)=>{
     }else{
         res.send("entered acc number are not same")
     }
-    res.render('members/payments',{memberStyle:true,userApi,member:true})
+    const bankMsg="Your bank account hasbeen added successfully"
+    res.render('members/payments',{memberStyle:true,userApi,member:true,bankMsg})
   } catch (err) {
     res.render('404',{error:true,err})
+    // console.log(err);
+    // res.send(err)
   }
 }
 exports.getMyTime=async(req,res)=>{
@@ -845,9 +873,7 @@ exports.callBack=(req,res)=>{
             });
            });
 }
-exports.addFigure=async(req,res)=>{
-    res.send("success")
-}
+
 
 
 

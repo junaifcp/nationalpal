@@ -86,7 +86,8 @@ const userScheema= new mongoose.Schema({
         type:Object
     },
     blockStatus:{
-        type:Boolean
+        type:Boolean,
+        default:false
     },
     date:{
         type:Date,

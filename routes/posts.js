@@ -8,6 +8,7 @@ const auth=require('../src/middleware/memberAuth')
 router.post('/',[store.array('images',1),auth],async(req,res)=>{
     const files=req.files;
     const category=req.body.categories;
+    req.session.addPost=true;
     if(req.cookies.memberLoginJwt){
         const users=req.user.toJSON();
     console.log(category);
@@ -40,9 +41,9 @@ router.post('/',[store.array('images',1),auth],async(req,res)=>{
         })
         const savedPost=await newPost.save()
 
-       res.redirect('/members/dashboard/add-post')
-    } catch (error) {
-      res.status(500).json(error+"the error part")
+       res.redirect('/members/dashboard')
+    } catch (err) {
+        res.render('404',{error:true,err})
     }
     }else if(req.cookies.adminToken){
 
@@ -74,8 +75,8 @@ router.post('/',[store.array('images',1),auth],async(req,res)=>{
         const savedPost=await newPost.save()
 
        res.redirect('/admin/dashboiard')
-    } catch (error) {
-      res.status(500).json(error+"the error part")
+    } catch (err) {
+        res.render('404',{error:true,err})
     }
     }    
   })

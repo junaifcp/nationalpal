@@ -36,12 +36,11 @@ router.post('/',[store.array('images',6),auth],async(req,res)=>{
            username:req.body.username,
            categories:req.body.categories 
     })
+    req.session.addDestination=true;
     const savedDestination=await addDestination.save()
     res.redirect('/admin/destination')
 })
 router.get('/',async(req,res)=>{
    
 })
-
-
 module.exports=router

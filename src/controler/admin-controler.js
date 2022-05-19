@@ -16,8 +16,8 @@ exports.admin=(req, res)=>{
   }
 
 exports.login=async(req,res)=>{
-  console.log(req.body);
-  console.log(process.env.PASSWORD);
+
+ 
   if(req.body.username===process.env.USER_NAME&&req.body.password===process.env.PASSWORD){
     const accessToken=await memberHelper.signAccessToken(process.env.USER_NAME)
     res.cookie("adminToken",accessToken,{httpOnly:true})
@@ -33,7 +33,7 @@ exports.logout=(req,res)=>{
 exports.dashboard= async(req,res)=>{
  try {
    const admin=req.admin;
-   console.log(admin);
+ 
    if(admin){
     const users=await User.find().sort({createdAt:-1}).limit(10).lean()
     const members=await Member.find().sort({createdAt:-1}).limit(10).lean()
@@ -41,6 +41,7 @@ exports.dashboard= async(req,res)=>{
     const posts=await Post.find().sort({createdAt:-1}).limit(10).lean()
     const payments=await Payment.find().sort({createdAt:-1}).limit(15).lean()
     const contact=await Contact.find().sort({createdAt:-1}).limit(10).lean()
+   
     const count={
       userCount:await User.count({}),
       guideCount:await Member.count({}),
@@ -49,11 +50,12 @@ exports.dashboard= async(req,res)=>{
 
     
     res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact})
+   
    }else{
     res.render('admin/login',{adminLogin:true,message:"Please login to access your dashboard...!!"})
    }
- } catch (error) {
-   console.log(error);
+ } catch (err) {
+  res.render('404',{error:true,err})
  }
 }
 exports.deleteUser=async(req,res)=>{
@@ -63,28 +65,80 @@ exports.deleteUser=async(req,res)=>{
     const user=await User.remove({_id})
    
     res.redirect('/admin/dashboard')
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    res.render('404',{error:true,err})
+  }
+}
+exports.deleteGuide=async(req,res)=>{
+  try {
+    
+    const _id=mongoose.Types.ObjectId(req.params.id);
+    // console.log(users);
+    const guide=await Member.remove({_id})
+   
+    res.redirect('/admin/dashboard')
+  } catch (err) {
+    res.render('404',{error:true,err})
+  }
+}
+exports.deletePost=async(req,res)=>{
+  try {
+    
+    const _id=mongoose.Types.ObjectId(req.params.id);
+    // console.log(users);
+    const guide=await Post.remove({_id})
+   
+    res.redirect('/admin/dashboard')
+  } catch (err) {
+    res.render('404',{error:true,err})
   }
 }
 exports.blockUser=async(req,res)=>{
   const _id=mongoose.Types.ObjectId(req.params.id);
-  const status=await User.findOne({_id},{blockStatus:1})
-  console.log(status);
+  let status=await User.findOne({_id},{blockStatus:1})
+  // console.log(status+"Status");
   if(status.blockStatus){
     const user=await User.updateOne({_id:_id},{
       $set:{
         blockStatus:false
       }
+      
+      
     })
+  
   }else{
     const user=await User.updateOne({_id:_id},{
       $set:{
         blockStatus:true
       }
     })
+   
   }
+ 
+  res.redirect('/admin/dashboard')
+}
+exports.blockGuide=async(req,res)=>{
+  const _id=mongoose.Types.ObjectId(req.params.id);
+  let status=await Member.findOne({_id},{blockStatus:1})
+  // console.log(status+"Status");
+  if(status.blockStatus){
+    const user=await Member.updateOne({_id:_id},{
+      $set:{
+        blockStatus:false
+      }
+      
+      
+    })
   
+  }else{
+    const user=await Member.updateOne({_id:_id},{
+      $set:{
+        blockStatus:true
+      }
+    })
+   
+  }
+ 
   res.redirect('/admin/dashboard')
 }
 exports.touristsAll=async(req,res)=>{
@@ -99,9 +153,9 @@ try {
   let tourists= await User.paginate({},{limit,page,sort:{createdAt:-1},lean:true})
 
   res.render('admin/tourists-all',{admin:true,tourists,count})
-} catch (error) {
-  console.log(error);
-  res.send("error occured")
+} catch (err) {
+  res.render('404',{error:true,err})
+  // res.send("error occured")
 }
 }
 exports.guidesAll=async(req,res)=>{
@@ -116,9 +170,9 @@ exports.guidesAll=async(req,res)=>{
     let guides= await Member.paginate({},{limit,page,sort:{createdAt:-1},lean:true})
 
     res.render('admin/guides-all',{admin:true,guides,count})
-  } catch (error) {
-    console.log(error);
-    res.send("error occured")
+  } catch (err) {
+    // console.log(error);
+    res.render('404',{error:true,err})
   }
 }
 exports.postsAll=async(req,res)=>{
@@ -134,9 +188,9 @@ exports.postsAll=async(req,res)=>{
     let posts= await Post.paginate({},{limit,page,sort:{createdAt:-1},lean:true})
 
     res.render('admin/posts-all',{admin:true,posts,count})
-  } catch (error) {
-    console.log(error);
-    res.send("error occured")
+  } catch (err) {
+    // console.log(error);
+    res.render('404',{error:true,err})
   }
 }
 exports.paymentsAll=async(req,res)=>{
@@ -146,15 +200,15 @@ exports.paymentsAll=async(req,res)=>{
       guideCount:await Member.count({}),
       postCount:await Post.count({})
     }
-    console.log(count)
+   
     const limit=parseInt(req.query.limit,10)||10;
     const page=parseInt(req.query.page,10)||1;
     let payments= await Payment.paginate({},{limit,page,sort:{createdAt:-1},lean:true})
 
     res.render('admin/payments-all',{admin:true,payments,count})
   } catch (error) {
-    console.log(error);
-    res.send("error occured")
+    console.log(err);
+    res.render('404',{error:true,err})
   }
  
 }
@@ -162,8 +216,8 @@ exports.destination=async(req,res)=>{
   try {
     const categories=await destCat.find().lean()
     res.render('admin/destination-add',{admin:true,categories})
-  } catch (error) {
-    console.log(error);
-    res.send("error occured")
+  } catch (err) {
+    res.render('404',{error:true,err})
+  
   }
 }
