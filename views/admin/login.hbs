@@ -2,6 +2,9 @@
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
+			{{#if message}}
+			{{>message}}
+			{{/if}}
 			<div class="card-header">
 				<h3>Sign In</h3>
 				<div class="d-flex justify-content-end social_icon">

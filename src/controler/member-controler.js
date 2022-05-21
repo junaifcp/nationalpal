@@ -64,7 +64,7 @@ exports.loginGuidePost=async(req,res)=>{
       res.status(400).render('users/login-main',{loginmain:true,message:'Invalid credentials, Please check your Email and password again'})
     }
   }
-  //
+
 exports.logout=async (req,res)=>{
     try {
       //for single device

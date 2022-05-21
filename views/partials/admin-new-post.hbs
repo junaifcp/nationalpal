@@ -20,6 +20,9 @@
                     <div class="contact-form">
                         <div id="success"></div>
                         <form action="/api/posts" method="POST" enctype="multipart/form-data">
+                        {{#if adminErr}}
+                        {{>message}}
+                        {{/if}}
                              <div class="control-group">
                                 <input type="text" name="username" value="Admin" class="form-control" id="name" readonly="readonly" />
                                 <p class="help-block text-danger"></p>

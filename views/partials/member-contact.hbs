@@ -52,7 +52,7 @@
         <div class="col-md-12 pb-5">
             <div class="contact-form">
                 <div id="success"></div>
-                <form action="/contact/{{userApi._id}}" method="post">
+                <form action="/contact/{{userApi._id}}" method="post" >
                     {{#if alert}}
                     {{#each alert}}
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -68,7 +68,7 @@
                             required="required" />
                         <small id="namevalid" class="form-text text-muted invalid-feedback">
                         Your username must be 2-10 characters long and should not start with a number
-                      </small>
+                      </small> 
                     </div>
                     <div class="control-group">
                         <input name="email" type="email" id="email" class="form-control" placeholder="Your Email"

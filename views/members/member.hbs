@@ -31,10 +31,10 @@
             const email = document.getElementById('email');
             const phone = document.getElementById('phone');
             let validEmail = false;
-let validPhone = false;
-let validUser = false;
-$('#failure').hide();
-$('#success').hide();
+          let validPhone = false;
+        let validUser = false;
+        $('#failure').hide();
+        $('#success').hide();
 
 // console.log(name, email, phone);
 name.addEventListener('blur', ()=>{
@@ -92,10 +92,10 @@ phone.addEventListener('blur', ()=>{
         
     }
 })
-
-let submit = document.getElementById('submitForm');
+function validate(){
+{{!-- let submit = document.getElementById('submitForm');
 submit.addEventListener('submit', (e)=>{
-    e.preventDefault();
+    e.preventDefault(); --}}
 
     console.log('You clicked on submit');
     console.log(validEmail, validUser, validPhone);
@@ -126,6 +126,9 @@ submit.addEventListener('submit', (e)=>{
     
     
 })
+}
+
+
          
 
         </script>

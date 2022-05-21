@@ -23,7 +23,18 @@ exports.login=async(req,res)=>{
     res.cookie("adminToken",accessToken,{httpOnly:true})
     res.redirect('/admin/dashboard')
   }else{
-    res.json({message:'passwords is not matching'})
+    if(req.body.username!==process.env.USER_NAME){
+      const message='Please check your username..!';
+      res.render('admin/login',{adminLogin:true,message})
+    }else if(req.body.password!==process.env.PASSWORD){
+      const message='Your password is not matching';
+      res.render('admin/login',{adminLogin:true,message})
+    }else{
+      const message='Invalid credentials...Try again';
+      res.render('admin/login',{adminLogin:true,message})
+    }
+   
+
   }
 } 
 exports.logout=(req,res)=>{
@@ -33,7 +44,7 @@ exports.logout=(req,res)=>{
 exports.dashboard= async(req,res)=>{
  try {
    const admin=req.admin;
- 
+    const adminErr=req.session.adminErr;
    if(admin){
     const users=await User.find().sort({createdAt:-1}).limit(10).lean()
     const members=await Member.find().sort({createdAt:-1}).limit(10).lean()
@@ -49,7 +60,7 @@ exports.dashboard= async(req,res)=>{
     }
 
     
-    res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact})
+    res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,adminErr})
    
    }else{
     res.render('admin/login',{adminLogin:true,message:"Please login to access your dashboard...!!"})
