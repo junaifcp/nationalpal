@@ -12,6 +12,7 @@ const memberControler=require('../src/controler/member-helper');
 const store=require('../src/middleware/multer');
 const parseUrl=express.urlencoded({extended:false})
 const parseJson=express.json({extended:false})
+const { validateUsername,validateEmail,validateSubject,validateDetails} = require('../src/middleware/validator')
 const {check,validationResult}=require('express-validator')
 // loading posts for pagination
 const Post=require('../src/models/post')
@@ -73,25 +74,11 @@ router.get('/blog',auth,controler.blog);
 router.get('/contact',auth,controler.contact);
 router.get('/blog-single/:id',auth,controler.blogSingle);
 
-router.post('/contact',auth,[
-    check('name','Name must be minimom of three letters')
-    .exists()
-    .isLength({min:3}),
-    check('email','Email is not valid')
-    .isEmail()
-    .normalizeEmail()
-],controler.contactPost);
+router.post('/contact',auth,[validateUsername,validateEmail],controler.contactPost);
 router.post('/hotel',auth,controler.destinationPost)
 router.get('/hotel-single/:id',auth,controler.hotelSingle)
 router.get('/contact/:id',auth,memberControler.contactProfile)
-router.post('/contact/:id',auth,[
-    check('name','Name must be minimom of three letters')
-    .exists()
-    .isLength({min:3}),
-    check('email','Your email must be a valid email')
-    .isEmail()
-    .normalizeEmail()
-],memberControler.contactProfilePost)
+router.post('/contact/:id',auth,[validateUsername,validateEmail,validateSubject,validateDetails],memberControler.contactProfilePost)
 
 //password reset
 router.get('/password-reset',controler.passwordReset)

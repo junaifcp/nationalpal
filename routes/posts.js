@@ -7,10 +7,6 @@ const auth=require('../src/middleware/memberAuth')
 //CREATE
 router.post('/',[store.array('images',1),auth],async(req,res)=>{
     const files=req.files;
-    if(!files){
-        req.session.adminErr="Image cant be empty"
-         res.redirect('/members/dashboard')
-    }
     const category=req.body.categories;
     req.session.addPost=true;
     if(req.cookies.memberLoginJwt){

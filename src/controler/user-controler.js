@@ -535,6 +535,7 @@ exports.signupUser=async(req,res)=>{
       let guide=req.cookies.memberLoginJwt;
       if(!errors.isEmpty()){
         const alert=errors.array()
+        console.log(alert);
         if(user){
           let users=req.user.toJSON();
           res.render('landing/contact',{client:true,users,alert})
