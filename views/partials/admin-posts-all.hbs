@@ -6,7 +6,7 @@
   <div class="comment-widgets">
     {{#each posts.docs}}
     <div class="">
-      <a href="" class=""><button type="button"
+      <a  href="" onclick="deletePost('{{this._id}}')"><button type="button"
           class="btn btn-danger btn-sm text-white rounded-5 rounded-top">Delete</button></a>
     </div>
     <div class="card mb-3" style="max-width: 940px;">

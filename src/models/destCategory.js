@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 const destCategorySchema=new mongoose.Schema({
     name:{
         type:String,
-        required:true,
+       
     },
     desc:{
         type:String

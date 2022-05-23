@@ -123,6 +123,7 @@ const { date } = require('joi');
     ],
     amountPay:{
         type:String,
+        default:"100"
 
     },
     account:[

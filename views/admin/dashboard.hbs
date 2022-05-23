@@ -64,6 +64,9 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+            {{#if alert}}
+    {{>alert}}
+    {{/if}}
           <!-- ============================================================== -->
           <!-- Sales Cards  -->
           <!-- ============================================================== -->
@@ -133,3 +136,74 @@
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+              <script>
+                
+                
+                    function deleteTourist(id){
+                     
+                      swal({
+                           title: "Are you sure?",
+                           text: "Once deleted, you will not be able to recover !",
+                           icon: "warning",
+                           buttons: true,
+                           dangerMode: true,
+                         })
+                         .then((willDelete) => {
+                           if (willDelete) {
+                             fetch(`/admin/dashboard/delete-user/${id}`);
+                             swal("Deleted Successfully",{
+                               icon: "success",
+                             });
+
+                           } else {
+                             swal("Account is safe!");
+                           }
+                       });
+
+                    }
+                      function deleteGuide(id){
+                     
+                      swal({
+                           title: "Are you sure?",
+                           text: "Once deleted, you will not be able to recover !",
+                           icon: "warning",
+                           buttons: true,
+                           dangerMode: true,
+                         })
+                         .then((willDelete) => {
+                           if (willDelete) {
+                             fetch(`/admin/dashboard/delete-guide/${id}`);
+                             swal("Deleted Successfully",{
+                               icon: "success",
+                             });
+
+                           } else {
+                             swal("Account is safe!");
+                           }
+                       });
+
+                    }
+                     function deletePost(id){
+                     
+                      swal({
+                           title: "Are you sure?",
+                           text: "Once deleted, you will not be able to recover !",
+                           icon: "warning",
+                           buttons: true,
+                           dangerMode: true,
+                         })
+                         .then((willDelete) => {
+                           if (willDelete) {
+                             fetch(`/admin/dashboard/delete-post/${id}`);
+                             swal("Deleted Successfully",{
+                               icon: "success",
+                             });
+
+                           } else {
+                             swal("Account is safe!");
+                           }
+                       });
+
+                    }
+                  </script>  

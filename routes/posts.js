@@ -3,9 +3,23 @@ const Post=require('../src/models/post');
 const Category=require('../src/models/category');
 const Member=require('../src/models/member-register')
 const store=require('../src/middleware/multer');
-const auth=require('../src/middleware/memberAuth')
+const auth=require('../src/middleware/memberAuth');
+const validate = require('../src/middleware/validator')
+const {validationResult}=require('express-validator')
 //CREATE
-router.post('/',[store.array('images',1),auth],async(req,res)=>{
+router.post('/',[store.array('images',1),auth],[validate.title,validate.validateDesc],async(req,res)=>{
+    const errors=validationResult(req)
+    if(!errors.isEmpty()){
+        const alert=errors.array()
+        req.session.postErr=alert
+        if(req.cookies.adminToken){
+
+            res.redirect('/admin/dashboard')
+        }else{
+            res.redirect('/members/dashboard/add-post')
+        }
+      
+      }
     const files=req.files;
     const category=req.body.categories;
     req.session.addPost=true;
@@ -74,7 +88,7 @@ router.post('/',[store.array('images',1),auth],async(req,res)=>{
         })
         const savedPost=await newPost.save()
 
-       res.redirect('/admin/dashboiard')
+       res.redirect('/admin/dashboard')
     } catch (err) {
         res.render('404',{error:true,err})
     }

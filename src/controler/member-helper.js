@@ -23,9 +23,9 @@ var instance = new Razorpay({
   });
 
 //edit profile button route in member dashboard method GET
-exports.editProfile=async function(req,res,next){  
+exports.editProfile=async function(req,res,next){
     let users=req.user.toJSON();
-    res.render('members/editProfile',{editProfile:true,users:users})
+    res.render('members/editProfile',{editProfile:true,users,member:true})
 }
 //edit profile route in member dashboard method POST
 exports.updateProfile=async function(req,res,next){
@@ -256,6 +256,12 @@ exports.editSocialPost=async(req,res,next)=>{
         let guide=req.cookies.memberLoginJwt;
         const categories=await Categories.find().lean()
         req.session.addPost=true
+        const postErr=req.session.postErr;
+        if(postErr){
+            let users=req.user.toJSON();
+            req.session.postErr=null;
+          res.render('members/add-post',{member:true,memberStyle:true,users,contact:true,categories,postErr})
+        }
         if(user){
           let users=req.user.toJSON();
           res.render('members/add-post',{client:true,memberStyle:true,users,contact:true,categories})
@@ -434,11 +440,11 @@ exports.feedbackMember=(req,res)=>{
 }
 
 exports.payments=async(req,res)=>{
-    let users=req.user.toJSON();
-    const id=users._id.toString()
+    let userApi=req.user.toJSON();
+    const id=userApi._id.toString()
     const payments=await Payment.find({id}).sort({createdAt:-1}).lean()
     const accepted=await Payment.find({acceptStatus:true}).lean()
-    res.render('members/payments',{memberStyle:true,users,member:true,payments,accepted})
+    res.render('members/payments',{memberStyle:true,userApi,member:true,payments,accepted})
 }
 exports.guideMessages=async(req,res)=>{
     let users=req.user.toJSON();
@@ -458,9 +464,16 @@ exports.amount=async(req,res)=>{
 }
 exports.bankDetails=async(req,res)=>{
   try {
-    const userApi=req.user.toJSON();
+      const userApi=req.user.toJSON();
+    const errors=validationResult(req)
+    if(!errors.isEmpty()){
+        const alert=errors.array()
+        res.render('members/payments',{memberStyle:true,userApi,member:true,alert})
+      
+      }
     const accNumber=req.body.accNumber;
     const cAccNumber=req.body.cAccNumber
+
     if(accNumber===cAccNumber){
         const memberBank=await Member.findOneAndUpdate({_id:userApi._id},{
             $set:{

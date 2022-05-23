@@ -36,8 +36,7 @@
         <input type="text" name="name" id="hidden" value="{{userApi.firstName}}&nbsp;{{userApi.lastName}}" hidden>
            <button type="submit" class="btn btn-success">MAKE PAYMENT</button>
            <a href="/get-the-time-later?status=pending&payLater=true&id={{_id}}&amount={{member.amountPay}}"><button type="button" class="btn btn-warning">PAY LATER</button></a>
-           <button class="btn btn-danger">CANCEL</button>
-           {{!-- <p id="hidden" hidden>{{_id}}</p> --}}
+
     </form>
    
 </div>
@@ -61,6 +60,7 @@
       }); --}}
  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
      const element= document.getElementById('alertStatus');
         element.style.display="none";
@@ -140,7 +140,12 @@
          
          success: function(res) {
         console.log(res);
-        alert(res);
+          swal({
+                     title: "Your amount recieved",
+                     text: res,
+                     icon: "success",
+                     button: "Cancel",
+                   });
         guideMail(reciever,order)
     }
 });
@@ -154,8 +159,7 @@
             url:"/send-guide-email?id="+id+"&"+reciever,
             type:'GET',
             success:function(res){
-                console.log(res);
-                alert(res);
+              console.log(res)
             }
         })
     }

@@ -58,17 +58,20 @@
                     <div class="contact-form">
                         <div id="success"></div>
                         <form action="/api/posts" method="POST" enctype="multipart/form-data">
+                        {{#if postErr}}
+                        {{>alert}}
+                        {{/if}}
                              <div class="control-group">
                                 <input type="text" name="username" value="{{users.userName}}" class="form-control" id="name" readonly="readonly" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <input type="text" name="title" class="form-control" id="name" placeholder="Title" />
+                                <input type="text" name="title" class="form-control" id="name" placeholder="Title" required/>
                                 <p class="help-block text-danger"></p>
                             </div>
                             
                             <div class="control-group">
-                                <textarea class="form-control" name="desc" rows="8" id="message" placeholder="Post description" ></textarea>
+                                <textarea class="form-control" name="desc" rows="8" id="message" placeholder="Post description" required></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
@@ -86,7 +89,7 @@
                                 <p class="help-block text-danger"></p> --}}
                             </div>
                              <div class="control-group">
-                                <input type="file" name="images" class="form-control" id="formFile" />
+                                <input type="file" name="images" class="form-control" id="formFile" required />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>

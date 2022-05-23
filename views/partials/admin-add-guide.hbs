@@ -1,6 +1,9 @@
 
 
 <div class="card" id="addGuides">
+    {{#if alert2}}
+    {{>alert}}
+    {{/if}}
     <h1 class="text-center pt-3">Add new Guide</h1>
                 <div class="card-body d-flex">
                   <h4 class="card-title">Add tourist details to create a new user account</h4>
@@ -91,9 +94,9 @@
                                 
                             </div>
                         
-                                    <input type="submit" class="btn btn-info ms-auto mt-5" value="Register" />
                                 
                         </div>
+                                    <input type="submit" class="btn btn-info mt-5" value="Register" />
                     </form>
 
                     </div>

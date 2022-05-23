@@ -6,23 +6,17 @@ const auth=require('../src/middleware/memberAuth')
 const jwtMember = require('jsonwebtoken');
 const controler=require('../src/controler/member-controler');
 const memberControler=require('../src/controler/member-helper');
-const {check,validationResult}=require('express-validator')
+const validate = require('../src/middleware/validator')
+// const {check,validationResult}=require('express-validator')
 const store=require('../src/middleware/multer');
 const Taskrouter = require('twilio/lib/rest/Taskrouter');
 
 /* GET users listing. */
 // router.get('/', controler.home)
 //create a new member in database
-router.post('/signup-guide',controler.signupGuidePost)
+router.post('/signup-guide',[validate.firstName,validate.lastName,validate.validateEmail,validate.userName,validate.guidePhone,validate.validatePassword,validate.guideAge],controler.signupGuidePost)
 //member login check
-router.post('/login-guide',[
-    check('password','Password must be minimom of three letters')
-    .exists()
-    .isLength({min:3}),
-    check('email','Email is not valid')
-    .isEmail()
-    .normalizeEmail()
-],controler.loginGuidePost)
+router.post('/login-guide',controler.loginGuidePost)
 //member dashboard
 router.get('/dashboard',auth,memberControler.dashboard)
 router.get('/dashboard/add-post',auth,memberControler.addPost)
@@ -49,7 +43,7 @@ router.get('/dashboard/messages',auth,memberControler.guideMessages)
 //posts
 router.get('/edit-post/:id',auth,memberControler.editPost);
 router.post('/dashboard/add-figure',auth,memberControler.amount)
-router.post('/dashboard/bank-details',auth,memberControler.bankDetails)
+router.post('/dashboard/bank-details',auth,[validate.validateUsername,validate.bankName,validate.ifsc,validate.accountNumber],memberControler.bankDetails)
 
 
 module.exports = router;

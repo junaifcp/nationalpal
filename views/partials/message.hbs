@@ -19,3 +19,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {{/if}}
+        {{#if loginErr1}}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{loginErr1}}
+       
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        {{#if message1}}
+         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{message1}}
+       
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}

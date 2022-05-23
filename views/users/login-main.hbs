@@ -1,4 +1,6 @@
+{{#if alert}}
 {{>alert}}
+{{/if}}
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/main/images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
@@ -57,7 +59,11 @@
                             </div> --}}
                         </div>
                         <form action="/login" method="POST" class="signin-form" id="form">
+                    {{#if loginErr1}}
                         {{>message}}
+                        {{/if}}
+                    
+                        
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Username</label>
                                 <input name="username" id="username" type="text" class="form-control"
@@ -127,8 +133,9 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Login to members account</h3>
                     <form action="/members/login-guide" method="POST">
-                    {{>alert}}
+            {{#if loginErr2}}
                     {{>message}}
+                    {{/if}}
                         <div class="row register-form">
                             <div class="col-md-6">
 
@@ -167,37 +174,40 @@
                 </div>
                 <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <h3 class="register-heading">Sign up as an Employee</h3>
+
                     <form action="/members/signup-guide" method="POST" id="guideForm">
-                   {{>alert2}}
+                    {{#if alert}}
+                    {{>alert}}
+                    {{/if}}
                         <div class="row register-form">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input name="firstName" id="guideFName" type="text" class="form-control" placeholder="First Name *"
-                                        value="" />
+                                        value="" required />
                                 
                                 </div>
                                 <div class="form-group">
                                     <input name="email" type="email" id="guideEmail" class="form-control" placeholder="Your Email *"
-                                        value="" />
+                                        value="" required  />
                                 
                                 </div>
                                 <div class="form-group">
                                     <input name="memberPhone" id="guidePhone" type="text" minlength="10" maxlength="10"
-                                        class="form-control" placeholder="Your Phone *" value="" />
+                                        class="form-control" placeholder="Your Phone *" value="" required />
                                 
                                 </div>
                                 <div class="form-group">
                                     <input name="password" type="password" id="guidePass" class="form-control" placeholder="Password *"
-                                        value="" />
+                                        value="" required />
                                         
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="guideCountry" name="country" class="form-control"
-                                        placeholder="Country">
+                                        placeholder="Country" required>
                                 </div>
                                 <div class="form-group">
                                     <input name="place" type="text" id="guidePlace" class="form-control" placeholder="Your locality *"
-                                        value="" />
+                                        value="" required />
                                 
                                 </div>
 
@@ -205,12 +215,12 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <input name="lastName" id="guideLName" type="text" class="form-control" placeholder="Last Name *"
-                                        value="" />
+                                        value="" required />
                           
                                 </div>
                                 <div class="form-group">
                                     <input name="userName" id="guideUserName" type="text" class="form-control" placeholder="user Name *"
-                                        value="" />
+                                        value="" required />
                                          
                                 </div>
                                 <div class="form-group">
@@ -227,12 +237,12 @@
                                 </div>
                                  <div class="form-group">
                                     <input name="cPassword" id="guideCPass" type="password" class="form-control"
-                                        placeholder="Confirm Password *" value="" />
+                                        placeholder="Confirm Password *" value="" required />
                                 
                                 </div>
                                 <div class="form-group">
                                     <input type="text" id="guideAge" minlength="1" maxlength="3" name="memberAge" class="form-control"
-                                        placeholder="Your Age *" value="" />
+                                        placeholder="Your Age *" value="" required />
                                 </div>
                                
                                 <div class="form-group">

@@ -11,6 +11,7 @@ const memberHelper=require('../../src/controler/member-functions')
 const destCat=require('../../src/models/destCategory')
 
 
+
 exports.admin=(req, res)=>{
     res.render('admin/login',{adminLogin:true})
   }
@@ -44,7 +45,6 @@ exports.logout=(req,res)=>{
 exports.dashboard= async(req,res)=>{
  try {
    const admin=req.admin;
-    const adminErr=req.session.adminErr;
    if(admin){
     const users=await User.find().sort({createdAt:-1}).limit(10).lean()
     const members=await Member.find().sort({createdAt:-1}).limit(10).lean()
@@ -58,9 +58,26 @@ exports.dashboard= async(req,res)=>{
       guideCount:await Member.count({}),
       postCount:await Post.count({})
     }
+    const alert2=req.session.guideErr;
+    const alert1=req.session.touristErr;
+    const alert=req.session.postErr;
+    if(alert){
+      req.session.postErr=null
+      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert})
 
+    }if(alert1){
+     
+      req.session.touristErr=null
+      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert1})
+    }if(alert2){
+      req.session.guideErr=null;
+      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert2})
+    }
+
+ 
+
+      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact})
     
-    res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,adminErr})
    
    }else{
     res.render('admin/login',{adminLogin:true,message:"Please login to access your dashboard...!!"})
@@ -74,8 +91,9 @@ exports.deleteUser=async(req,res)=>{
     const _id=mongoose.Types.ObjectId(req.params.id);
     // console.log(users);
     const user=await User.remove({_id})
-   
-    res.redirect('/admin/dashboard')
+    console.log("entered to delete section");
+    // res.send("User has been deleted successfully")
+    // res.redirect('/admin/dashboard')
   } catch (err) {
     res.render('404',{error:true,err})
   }
@@ -87,7 +105,7 @@ exports.deleteGuide=async(req,res)=>{
     // console.log(users);
     const guide=await Member.remove({_id})
    
-    res.redirect('/admin/dashboard')
+    // res.redirect('/admin/dashboard')
   } catch (err) {
     res.render('404',{error:true,err})
   }
@@ -125,7 +143,7 @@ exports.blockUser=async(req,res)=>{
     })
    
   }
- 
+ req.session.bockStatus=true;
   res.redirect('/admin/dashboard')
 }
 exports.blockGuide=async(req,res)=>{

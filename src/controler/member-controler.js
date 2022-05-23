@@ -1,7 +1,7 @@
 const Member = require('../../src/models/member-register');
 const bcrypt=require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {check,validationResult}=require('express-validator')
+const {validationResult}=require('express-validator')
 //members home router<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 // exports.home=(req, res)=>{
     
@@ -9,7 +9,16 @@ const {check,validationResult}=require('express-validator')
 //member signup route : localhost:3000/loginMain, method POST
 exports.signupGuidePost=async(req,res)=>{
     try {
-      console.log(req.body);
+      const errors=validationResult(req)
+      if(!errors.isEmpty()){
+        const alert=errors.array()
+        if(req.cookies.adminToken){
+          req.session.guideErr=alert;
+          res.redirect('/admin/dashboard')
+        }
+        res.status(400).render('users/login-main',{loginmain:true,alert})
+      
+      }
       const password =req.body.password;
       const cPassword =req.body.cPassword;
       if(password===cPassword){
@@ -45,11 +54,7 @@ exports.loginGuidePost=async(req,res)=>{
     try {
       const email = req.body.email;
       const password = req.body.password;
-      const errors=validationResult(req)
-      if(!errors.isEmpty()){
-        const alert=errors.array()
-        res.render('users/login-main',{alert,loginmain:true})
-      }else{
+    
         const memberEmail = await Member.findOne({email:email});
         const isPasswordMatch = await bcrypt.compare(password,memberEmail.password);
         //generating member token part
@@ -57,11 +62,14 @@ exports.loginGuidePost=async(req,res)=>{
         //adding generated token in member browser
         res.cookie('memberLoginJwt', token,{httpOnly:true});
         if(isPasswordMatch){
+          req.session.guideSuccess="You have been successfully loged into your account";
           res.redirect('/members/dashboard')
+        }else{
+          res.render('users/login-main',{loginmain:true,loginErr2:'Something went wrong check your email and password'});
         }
-      }
+      
     } catch (error) {
-      res.status(400).render('users/login-main',{loginmain:true,message:'Invalid credentials, Please check your Email and password again'})
+      res.status(400).render('users/login-main',{loginmain:true,loginErr2:'Invalid credentials, Please check your Email and password again'})
     }
   }
 

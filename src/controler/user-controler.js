@@ -22,11 +22,13 @@ var validator = require("email-validator");
 const { response } = require('../../app');
 const destCategory = require('../models/destCategory');
 const Destination=require('../../src/models/destination')
-const {check,validationResult}=require('express-validator')
+const {validationResult}=require('express-validator')
 //Home route starts here
 exports.home=async (req,res)=>{
+  
     const posts=await Post.find().sort({createdAt:-1}).limit(6).lean()
-    const types=await destCategory.find().lean()
+    const types=await destCategory.find().lean();
+    console.log("entereered");
     memberHelper.getAllMembers().then((members)=>{
       if(req.cookies.jwt){
         let users=req.user.toJSON();
@@ -35,6 +37,7 @@ exports.home=async (req,res)=>{
         let users=req.user.toJSON();
         res.render('index',{users,member:true,members,posts,homeMain:true,types});
       }else{
+        console.log("entered here");
         res.render('index',{client:true,members,posts,homeMain:true,types});
       } 
     })
@@ -111,12 +114,13 @@ exports.loginPost=async(req,res)=>{
         httpOnly:true
       });  
        if(isPasswordMatch){
+         req.session.userSuccess="You have been successfully loged into your account"
          res.redirect('/dashboard')
        }else{
-        res.render('users/login-main',{loginmain:true,message:'Something went wrong check your email and password'});
+        res.render('users/login-main',{loginmain:true,loginErr1:'Something went wrong check your email and password'});
        }
       } catch (error) {
-        res.render('users/login-main',{loginmain:true,message:'Email is not valid'});
+        res.render('users/login-main',{loginmain:true,loginErr1:'Email is not valid'});
       }
 }
 exports.signupPost=(req,res)=>{
@@ -125,9 +129,27 @@ exports.signupPost=(req,res)=>{
 //user signup POST section router {method POST}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 exports.signupUser=async(req,res)=>{
     try {
+      const errors=validationResult(req)
+
+      if(!errors.isEmpty()){
+        
+        const alert=errors.array();
+          req.session.touristErr=alert;
+          if(req.cookies.adminToken){
+
+            res.redirect('/admin/dashboard')
+          }else{
+            res.render('users/user-signup',{loginmain:true,alert});
+          }
+        
+  
+      }
       const password=req.body.password;
       const cPassword=req.body.cPassword;
-      if(password===cPassword){
+      const isUser=User.findOne({email:req.body.email})
+      if(isUser){
+        res.render('users/user-signup',{loginmain:true,message:"User already exists with this Email"});
+      }else if(password===cPassword){
          const userList = new User({
            firstName : req.body.firstName,
            lastName : req.body.lastName,

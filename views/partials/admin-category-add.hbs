@@ -1,6 +1,7 @@
 
 
 <div class="card" id="addGuides">
+
     <h1 class="text-center pt-3">Add new category for destination</h1>
                 <div class="card-body d-flex mx-auto">
                   <h4 class="card-title">Add Category name, Description for updating category details </h4>
@@ -9,6 +10,12 @@
                   class="comment-widgets"
                   {{!-- style="max-height: 530px" --}}
                 >
+                    {{#if alert}}
+    {{>alert}}
+    {{/if}}
+    {{#if message}}
+    {{>message}}
+    {{/if}}
                   <div class="d-flex flex-row comment-row mt-0">
 
                          <!-- Contact Start -->
@@ -33,7 +40,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input name="photo" type="file" class="form-control" placeholder="Category image *"
-                                        value="" />
+                                        value="" accept="image/*" required/>
                                 </div>
                                 
                                 

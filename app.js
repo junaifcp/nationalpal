@@ -11,6 +11,7 @@ const methodOverride = require('method-override');
 var helpers = require('handlebars-helpers')();
 const nodemailer=require('nodemailer')
 const auth=require('./src/middleware/userAuth')
+// const {validator} = require('express-validator');
 
 // loading posts for pagination
 // instance of razorpay
@@ -30,6 +31,7 @@ var adminRouter = require('./routes/admin')
 var membersRouter = require('./routes/members');
 var usersRouter = require('./routes/users');
 const { data } = require('jquery');
+
 // var rootRouter = require('./routes/root')
 
   

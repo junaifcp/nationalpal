@@ -2,8 +2,18 @@ const router=require('express').Router();
 const Destination=require('../src/models/destination');
 const Category=require('../src/models/destCategory');
 const store=require('../src/middleware/multer');
+const {title,validateDesc}=require('../src/middleware/validator')
+const {validationResult}=require('express-validator')
 const auth=require('../src/middleware/memberAuth')
-router.post('/',[store.array('images',6),auth],async(req,res)=>{
+router.post('/',[store.array('images',6),auth],[title,validateDesc],async(req,res)=>{
+    const errors=validationResult(req)
+    const categories=await Category.find().lean()
+    if(!errors.isEmpty()){
+        const alert1=errors.array()
+        
+        res.render('admin/destination-add',{admin:true,categories,alert1})
+        
+      }
     const files=req.files;
     console.log(files);
     const category=req.body.categories;
@@ -38,7 +48,7 @@ router.post('/',[store.array('images',6),auth],async(req,res)=>{
     })
     req.session.addDestination=true;
     const savedDestination=await addDestination.save()
-    res.redirect('/admin/destination')
+    res.render('admin/destination-add',{admin:true,categories,message1:"Destination added successfully"})
 })
 router.get('/',async(req,res)=>{
    

@@ -12,7 +12,7 @@ const memberControler=require('../src/controler/member-helper');
 const store=require('../src/middleware/multer');
 const parseUrl=express.urlencoded({extended:false})
 const parseJson=express.json({extended:false})
-const { validateUsername,validateEmail,validateSubject,validateDetails} = require('../src/middleware/validator')
+const validator = require('../src/middleware/validator')
 const {check,validationResult}=require('express-validator')
 // loading posts for pagination
 const Post=require('../src/models/post')
@@ -23,17 +23,10 @@ router.get('/show-all-members',auth,controler.showAllMembers);
 router.post('/show-all-members',auth,controler.showAllMembersPost);
 router.get('/loginMain',auth,controler.loginMain);
 //login check
-router.post('/login',[
-    check('username','User name is not valid')
-    .exists()
-    .isLength({min:3}),
-    check('password','password must be 3 letters')
-    .exists()
-    .isLength({min:3})
-],controler.loginPost);
+router.post('/login',controler.loginPost);
  router.get('/signup',controler.signupPost);
 //create a new user in our database
-router.post('/signup',controler.signupUser);
+router.post('/signup',[validator.firstName,validator.lastName,validator.validateEmail,validator.touristPhone,validator.validatePassword,validator.touristAge],controler.signupUser);
 router.get('/logout',auth,controler.logout);
 router.get('/mobile',otpControler.mobile);
 router.post('/mobile',otpControler.numberPost);
@@ -74,11 +67,11 @@ router.get('/blog',auth,controler.blog);
 router.get('/contact',auth,controler.contact);
 router.get('/blog-single/:id',auth,controler.blogSingle);
 
-router.post('/contact',auth,[validateUsername,validateEmail],controler.contactPost);
+router.post('/contact',auth,[validator.validateUsername,validator.validateEmail],controler.contactPost);
 router.post('/hotel',auth,controler.destinationPost)
 router.get('/hotel-single/:id',auth,controler.hotelSingle)
 router.get('/contact/:id',auth,memberControler.contactProfile)
-router.post('/contact/:id',auth,[validateUsername,validateEmail,validateSubject,validateDetails],memberControler.contactProfilePost)
+router.post('/contact/:id',auth,[validator.validateUsername,validator.validateEmail,validator.validateSubject,validator.validateDetails],memberControler.contactProfilePost)
 
 //password reset
 router.get('/password-reset',controler.passwordReset)
