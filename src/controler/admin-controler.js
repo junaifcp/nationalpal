@@ -131,8 +131,6 @@ exports.blockUser=async(req,res)=>{
       $set:{
         blockStatus:false
       }
-      
-      
     })
   
   }else{
@@ -144,7 +142,7 @@ exports.blockUser=async(req,res)=>{
    
   }
  req.session.bockStatus=true;
-  res.redirect('/admin/dashboard')
+ res.redirect('/admin/dashboard')
 }
 exports.blockGuide=async(req,res)=>{
   const _id=mongoose.Types.ObjectId(req.params.id);

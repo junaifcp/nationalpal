@@ -1,9 +1,9 @@
 const mongoose=require('mongoose');
 // var md = require('markdown-it')();
 const marked=require('marked');
-const slugify=require('slugify')
+const slugify=require('slugify');
 const createDOMPurify=require('dompurify');
-const mongoosePaginate=require('mongoose-paginate-v2');
+ 
 const {JSDOM}=require('jsdom');
 const DOMPurify=createDOMPurify(new JSDOM().window);
 const PostSchema=new mongoose.Schema({

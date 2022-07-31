@@ -259,10 +259,9 @@ memberSchema.pre("save",async function(next){
      
     this.password =await bcrypt.hash(this.password,10);
    
-    this.cPassword=await bcrypt.hash(this.password,10);
+    this.cPassword=await bcrypt.hash(this.cpassword,10);
     }
     next();
 })
 const Member = new mongoose.model("Member", memberSchema);
 module.exports=Member;
-
