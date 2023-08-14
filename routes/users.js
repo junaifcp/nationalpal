@@ -58,7 +58,12 @@ router.get('/dashboard/find-guide',auth,controler.findGuide);
 
 //landing pages route
 
-router.get('/about',auth,controler.about);
+router.get('/about',controler.about);
+router.get('/shop',controler.shop)
+router.get('/partners',controler.partners)
+router.get('/contact-us',controler.contactUs)
+
+
 router.get('/destination',auth,controler.destination);
 router.get('/destination-single/:id',auth,controler.destinationSingle);
 router.get('/destination-full/:id',auth,controler.destinationFull);

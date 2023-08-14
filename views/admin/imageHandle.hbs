@@ -1,0 +1,182 @@
+<div class="grid-container">
+
+  {{>admin-header}}
+
+  {{>admin-sidebar}}
+
+  <!-- Main -->
+  <main class="main-container">
+    <div>
+      {{>message}}
+    </div>
+    <div class="main-title">
+      <h2>IMAGES</h2>
+      {{!-- <button class="button-9" id="open-modal-button" type="button" data-toggle="modal"
+        data-target="#exampleModalCenter">Add new image</button> --}}
+    </div>
+
+
+
+    <div class="charts-products">
+
+      <div class="charts-card">
+        <h2 class="chart-title">All Images</h2>
+        {{!-- <div id="bar-chart"></div> --}}
+        <form id="image-form" method="post" enctype="multipart/form-data"> 
+        <table class="table table-dark">
+          <thead>
+            <tr>
+
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Image preview</th>
+              <th scope="col">Upload</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+            <tr>
+              <th scope="row">1</th>
+              <td>Home header</td>
+              <td>
+                <img src="/uploads/{{images.homeHeader}}" class="imagePreviewTable" alt="not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeHeader">upload</span>
+                </button>
+              </td>
+              {{!-- <td>
+                <button type="button" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory" id="deleteCategoryOne">delete</span>
+                </button>
+              </td> --}}
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Products Header</td>
+              <td>
+                <img src="/uploads/{{images.productHeader}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="productHeader">upload</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>About Header</td>
+              <td>
+                <img src="/uploads/{{images.aboutHeader}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="aboutHeader">upload</span>
+                </button>
+              </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Contact Header</td>
+              <td>
+                <img src="/uploads/{{images.contactHeader}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="contactHeader">upload</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>Home Slider</td>
+              <td>
+                <img src="/uploads/{{images.homeSlider}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeSlider">upload</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>Logo Main</td>
+              <td>
+                <img src="/uploads/{{images.logoMain}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="logoMain">upload</span>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>Logo Small</td>
+              <td>
+                <img src="/uploads/{{images.logoSmall}}" class="imagePreviewTable" alt="Not-available">
+              </td>
+              <td>
+                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
+                <button type="submit" class="deleteButton">
+                  <span class="material-icons-outlined deleteCategory object-link" data-key="logoSmall">upload</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </form>
+      </div>
+
+    </div>
+  </main>
+  <!-- End Main -->
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function deleteCategory(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/admin/deleteCategory/${id}`);
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+
+        window.location.reload();
+      }
+    })
+    
+  }
+
+  const objectLinks = document.querySelectorAll('.object-link');
+const form = document.getElementById('image-form'); 
+console.log("Objectlinkd",objectLinks)
+objectLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    const key = link.getAttribute('data-key');
+    form.action = `/admin/uploadImage/${key}`; // Update the form's action URL
+    form.submit(); // Submit the form to navigate to the updated URL
+  });
+});
+</script>

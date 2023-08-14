@@ -1,301 +1,1501 @@
-<div class="hero-wrap js-fullheight" style="background-image: url('/main/images/mainImg.jpg');background-color:rgba(82, 80, 80, 0.502);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center" data-scrollax-parent="true">
-				<div class="col-md-7 ftco-animate">
-					<span class="subheading">Welcome to My Tour Mate</span>
-					<h1 class="mb-4">Discover Your Favorite Places and Find Your Travel Guide</h1>
-					<p class="caps">Travel to the any corner of India, without going around in circles</p>
-				</div>
-				{{!-- <a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4">
-					<span class="fa fa-play"></span>
-				</a> --}}
-			</div>
-		</div>
-	</div>
 
-		{{!--  --}}
+        <main>
 
-	<div class='container-fluid mx-auto mt-5 mb-5 col-12' style="text-align: center">
-    <div class="hd"><h1><b>Are you looking for a guide ?</b></h1></div>
-    <p>Follow the steps below and create your own account <br /> to find a guide for making your leisure more fun</p>
-    <div class="row" style="justify-content: center">
-        <div class="card col-md-3 col-12">
-            <div class="card-content">
-                <div class="card-body"> <img class="imgMain" src="/images/img-222.jpg" />
-                    <div class="shadow"></div>
-                    <div class="card-titleMain"> Step 1: Create an account</div>
-                    <div class="card-subtitle">
-                        <p>Create your account for free and explore best travel destinations, hotels, tour guides all over the India for free. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-		 <div class="card col-md-3 col-12">
-            <div class="card-content">
-                <div class="card-body"> <img class="imgMain" src="/images/img111.jpg" />
-                    <div class="shadow"></div>
-                    <div class="card-titleMain"> Step 2: Choose where do you want to travel</div>
-                    <div class="card-subtitle">
-                        <p>Create your account for free and explore best travel destinations, hotels, tour guides all over the India for free. </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-		 <div class="card col-md-3 col-12">
-            <div class="card-content">
-                <div class="card-body"> <img class="imgMain" src="/images/img333.jpg" />
-                    <div class="shadow"></div>
-                    <div class="card-titleMain"> Step 3: Contact with the guides</div>
-                    <div class="card-subtitle">
-                        <p>After when you choose your guide you can connect wth the and buy thei time to talk for getting know more about the details</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    </div>
-   
-</div>
-
-	
-         <!-- Room Start -->
-        <div class="container-xxl pb-2">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-           
-                    <h1 class="mb-5 text-center">Recently Added <span class="text-primary text-uppercase">Guides</span> who offer private and group guided tours</h1>
-                </div>
-                <div class="row g-4">
-					{{#each members}}
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="room-item shadow rounded overflow-hidden">
-                            <div class="position-relative">
-                                <img class="img-fluid" id="img-card" src="/uploads/{{profilePicId}}" alt="">   
-                            </div>
-                            <div class="p-4 mt-2">
-                               
-                                <div class="d-flex mb-3">
-									{{#if postCount}}
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-folder mx-2"></i>{{postCount}}&nbsp;Posts</small>
-									{{/if}}
-									{{#if feedbacks}}
-								
-                                    <small class="border-end me-3 pe-3"><i class="fa fa-comments mx-2"></i>{{feedCount feedbacks}}&nbsp;feedbacks</small>
-						
-									{{/if}}
-                                    {{!-- <small class="fa fa-star text-primary px-4">4/5</small> --}}
+            <!-- ======slider-area-start=========================================== -->
+            <div class="slider-area over-hidden">
+                <div class="slider-active">
+                    <div class="single-slider slider-height d-flex align-items-center" data-background="images/slider/slider-bg.jpg">
+                            <div class="slider-shape position-absolute">
+                                <span class="slider-bg-round d-block"></span>
+                            </div><!-- /slider-shape -->
+                        <div class="container">
+                            <div class="row pt-65 ">
+                                <div class="col-xl-6  col-lg-6  col-md-7  col-sm-12 col-12 d-flex align-items-center">
+                                    <div class="slider-content mt--15">
+                                        <span data-animation="fadeInLeft" data-delay=".7s" class="d-block theme-color">Welcome to</span>
+                                        <h2 data-animation="fadeInLeft" data-delay="1s" class="pt-15 mb-1 text-capitalize pb-10">National PALS <br> Trading Co.</h2>
+                                        <p class="pr-20" data-animation="fadeInLeft" data-delay="1.5s">Leading electrical & Conduits Company </p>
+                                        <a data-animation="fadeInUp" data-delay="1.7s" href="shop.html" class="web-btn  theme-border  d-inline-block mt-2 text-uppercase white theme-bg position-relative over-hidden pl-30 pr-30 ptb-17">shop now<span class="pl-2"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-6  col-lg-6  col-md-5  col-sm-12 col-12 d-flex align-items-center">
+                                    <div class="slider-img mt-35" data-animation="fadeInRight" data-delay="1.5s">
+                                    <img src="images/slider/home1-slider-img1.png" alt="">
+                                    </div>
+                            </div><!-- /col -->
+                            </div><!-- /row -->
+                        </div><!-- /container -->
+                    </div><!-- /single-slider -->
+                    <div class="single-slider slider-height d-flex align-items-center" data-background="images/slider/slider-bg.jpg">
+                        <div class="slider-shape position-absolute">
+                            <span class="slider-bg-round d-block"></span>
+                        </div><!-- /slider-shape -->
+                    <div class="container">
+                        <div class="row pt-65 ">
+                            <div class="col-xl-6  col-lg-6  col-md-7  col-sm-12 col-12 d-flex align-items-center">
+                                <div class="slider-content mt--15">
+                                    <span data-animation="fadeInLeft" data-delay=".7s" class="d-block theme-color">Welcome to</span>
+                                    <h2 data-animation="fadeInLeft" data-delay="1s" class="pt-15 mb-1 text-capitalize pb-10">National PALS <br> Trading Co.</h2>
+                                    <p class="pr-20" data-animation="fadeInLeft" data-delay="1.5s">Leading electrical & Conduits Company </p>
+                                    <a data-animation="fadeInUp" data-delay="1.7s" href="shop.html" class="web-btn  theme-border  d-inline-block mt-2 text-uppercase white theme-bg position-relative over-hidden pl-30 pr-30 ptb-17">shop now <span class="pl-2"><i class="fas fa-long-arrow-alt-right"></i></span></a>
                                 </div>
-								<h3><a href="#">{{userName}}</a></h3>
-                                <p class="text-body"><b>Location: </b>{{place}},&nbsp;{{state}}</p>
-								<p class="text-body"><b>Languages: </b>{{languages}}</p>
-								<p class="text-body"><b>What I offer: </b>{{offer}}</p>
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn btn-sm btn-primary rounded py-2 px-4" href="/member/{{_id}}">Show profile</a>
-                                    <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/contact/{{_id}}">Contact Now</a>
+                            </div><!-- /col -->
+                            <div class="col-xl-6  col-lg-6  col-md-5  col-sm-12 col-12 d-flex align-items-center">
+                                <div class="slider-img mt-35" data-animation="fadeInRight" data-delay="1.5s">
+                                <img src="images/slider/home1-slider-img1.png" alt="">
+                                </div>
+                        </div><!-- /col -->
+                        </div><!-- /row -->
+                    </div><!-- /container -->
+                </div><!-- /single-slider -->
+                </div><!-- /slider-active -->
+            </div>
+            <!-- slider-area-end=  -->
+
+            <!-- ====== banner-area-start=========================================== -->
+            <div class="banner-area mt-80 mb-45">
+                 <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6  col-md-6  col-sm-12 col-12 ">
+                            <div class="banner mb-30 transition-3 position-relative over-hidden wow slideInLeft" data-wow-duration="0.9s">
+                                <a href="shop.html" class="d-block">
+                                    <img class="img-zoom transition-3" src="images/banner/banner1.jpg" alt="">
+                                </a>
+                                <div class="banner-content position-absolute transfY transfY50 w-100 pl-50">
+                                    
+                                    <h4>
+                                        <a href="product-details.html">EMT Conduit  <br> & Fittings</a>
+                                    </h4>
+                                    <a href="shop.html" class="web-btn   d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7 mt-20">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-6 col-lg-6  col-md-6  col-sm-12 col-12">
+                            <div class="banner mb-30 transition-3 position-relative over-hidden wow slideInRight" data-wow-duration="0.9s">
+                                <a href="shop.html" class="d-block">
+                                    <img class="img-zoom transition-3" src="images/banner/banner2.jpg" alt="">
+                                </a>
+                                <div class="banner-content position-absolute transfY transfY50 w-100 pl-50">
+                                    
+                                    <h4>
+                                        <a href="product-details.html">Rigid Conduit  <br> 
+                                            & Fittings</a>
+                                    </h4>
+                                    <a href="shop.html" class="web-btn   d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7 mt-20">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-6 col-lg-6  col-md-6  col-sm-12 col-12">
+                            <div class="banner mb-30 transition-3 position-relative over-hidden wow slideInLeft" data-wow-duration="1.2s">
+                                <a href="shop.html" class="d-block">
+                                    <img class="img-zoom transition-3" src="images/banner/banner3.jpg" alt="">
+                                </a>
+                                <div class="banner-content position-absolute transfY transfY50 w-100 pl-50">
+                                    
+                                    <h4>
+                                        <a href="product-details.html">Liquid tight Flexible   <br>conduit & Fittings</a>
+                                    </h4>
+                                    <a href="shop.html" class="web-btn   d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7 mt-20">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-6 col-lg-6  col-md-6  col-sm-12 col-12 ">
+                            <div class="banner mb-30 transition-3 position-relative over-hidden wow slideInRight" data-wow-duration="1.2s">
+                                <a href="shop.html" class="d-block">
+                                    <img class="img-zoom transition-3" src="images/banner/banner4.jpg" alt="">
+                                </a>
+                                <div class="banner-content position-absolute transfY transfY50 w-100 pl-50">
+                                   
+                                    <h4>
+                                        <a href="product-details.html">Steel flexible  <br> conduit & Fittings</a>
+                                    </h4>
+                                    <a href="shop.html" class="web-btn d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7 mt-20">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                 </div><!-- /container -->
+            </div>
+            <!-- banner-area-end -->
+
+            <!-- ====== product-area-start================================ -->
+            <div class="product-area pb-40">
+                <div class="container">
+                    <div class="product-content single-product-tab-content">
+                        <div class="row">
+                            <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12 pb-15">
+                                <div class="section-title text-center">
+                                    <span class="theme-color d-block pb-2">Featured Product</span>
+                                    <h3>Popular Products</h3>
+                                </div><!-- /section-title -->
+                            </div><!-- /col -->
+                        </div><!-- /row -->
+                        <div class="popular-product mt-30">
+                            <div class="row product-active">
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product1.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Brass Cable Glands</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product5.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Rigid Pull Corner Elbow</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute theme-bg text-center px-2 transition-3 z-index1">	
+                                                    
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product2.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">End Cap</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute theme-bg text-center px-2 transition-3 z-index1">	
+                                                    	
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product6.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Chase Nipple</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product3.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Straight Squeeze Connector</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product7.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">PVC Coated Conduit Outlet Boxeswith
+Covers.</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute primary-bg text-center px-2 transition-3 z-index1">	
+                                                    	
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product4.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">EMT One Hole Strap</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute primary-bg text-center px-2 transition-3 z-index1">	
+                                                    
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product8.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Blimp Table Light</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute theme-bg text-center px-2 transition-3 z-index1">	
+                                                    
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product9.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Reducing Bushing</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                       
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute theme-bg text-center px-2 transition-3 z-index1">	
+                                                    
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product10.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Hay Cane Key Ring</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product11.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Rigid Watertight Hub</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product12.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Hay Cane Key Ring</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                            </div><!-- /row -->
+                        </div>
+                    </div><!-- /product-content -->
+                </div><!-- /container -->
+            </div>
+            <!-- product-area-end  -->
+
+            <!-- ====== product-off-banner-area-start ========================================= -->
+            <div class="banner__area-2 pb-60">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="banner__item-2 banner-right p-relative mb-30 pr-15">
+                                <div class="banner__thumb fix">
+                                    <a href="product-details.html" class="w-img"><img src="images/banner/banner-big-1.jpg" alt="banner"></a>
+                                </div>
+                                <div class="banner__content-2 p-absolute transition-3">
+                                    <span>Products Essentials</span>
+                                    <h4><a href="product-details.html">Bottle With Wooden Cork</a></h4>
+                                    <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas.</p>
+                                    <a href="shop.html" class="web-btn d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
                                 </div>
                             </div>
                         </div>
-					</div>           
-			  
-				{{/each}}
-				
-				 </div>
-				 <p class="mb-0 mt-5 text-center"><a href="/show-all-members/?page=1&limit=6" class="btn btn-outline-primary px-4 py-3">Show More</a></p>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class=" banner__item-2 banner-left p-relative mb-30 pl-15">
+                                <div class="banner__thumb fix">
+                                    <a href="product-details.html" class="w-img"><img src="images/banner/banner-big-2.jpg" alt="banner"></a>
+                                </div>
+                                <div class="banner__content-2 banner__content-2-right p-absolute transition-3">
+                                    <span>Products Furniture</span>
+                                    <h4><a href="product-details.html">Hauteville Plywood Chair</a></h4>
+                                    <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas.</p>
+                                    <a href="shop.html" class="web-btn d-inline-block text-uppercase primary-color gray-border2 position-relative over-hidden px-3 ptb-7">shop now <span class="pl-1"><i class="fas fa-long-arrow-alt-right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- Room End -->
+            <!-- product-off-banner-area-end  -->
 
-			{{>guide-need-card}}
-				<section class="ftco-section">
-			<div class="container">
-				<div class="row justify-content-center pb-4">
-					<div class="col-md-12 heading-section text-center ftco-animate">
-						{{!-- <span class="subheading">Destination</span> --}}
-						<h2 class="mb-4">Types of tourism | Destinations in India</h2>
-					</div>
-				</div>
-				<div class="row">
-						{{#each types}}
-					<div class="col-md-4 ftco-animate">
-						<div class="project-wrap">
-							<a href="/destination-single/{{name}}" class="img" style="background-image: url(/uploads/{{photo}});">
-								<span class="price">{{name}}</span>
-							</a>
-							<div class="text p-4">
-								<span class="days">{{count}} Attractions</span>
-								<h3><a href="#">{{name}}</a></h3>
-								<p class="location">{{slice desc}}</p>
-								
-							</div>
-						</div>
-					</div>
-					{{/each}}
-				</div>
-			</div>
-		</section>
-			{{>tourist-feedbacks}}
-		{{!-- /guides cards --}}
+            <!-- ====== best-seller-product-area-start================================ -->
+            <div class="product-area best-seller-product-area pb-40">
+                <div class="container">
+                    <div class="product-content single-product-tab-content">
+                        <div class="row">
+                            <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12 pb-15">
+                                <div class="section-title text-center">
+                                    <span class="theme-color d-block pb-2">Regular Product</span>
+                                    <h3>Best Seller Products</h3>
+                                </div><!-- /section-title -->
+                            </div><!-- /col -->
+                        </div><!-- /row -->
+                        <div class="popular-product mt-30">
+                            <div class="row product-active2">
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product9.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Reducing Bushing</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute theme-bg text-center px-2 transition-3 z-index1">	
+                                                    <span class="white text-uppercase d-block"><span>15% </span>off</span>	
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product10.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Two Gang Weatherproof Box</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product11.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Rigid Watertight Hub</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute primary-bg text-center px-2 transition-3 z-index1">	
+                                                    <span class="white text-uppercase d-block">new</span>	
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product12.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Humanscale Graphite Smart</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        <span class="primary-color">$86.88</span>
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product3.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Humanscale Graphite Smart</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        <span class="primary-color">$66.66</span>
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                                <div class="col-xl-4  col-lg-3  col-md-6  col-sm-6 col-12">
+                                    <div class="s-p-wrapper">
+                                        <div class="single-product mb-35">
+                                            <div class="single-product-img position-relative over-hidden">
+                                                <div class="single-product-label position-absolute primary-bg text-center px-2 transition-3 z-index1">	
+                                                    <span class="white text-uppercase d-block">new</span>	
+                                                </div><!-- /product-label -->
+                                                <a class="position-relative d-block" href="product-details.html">
+                                                    <img class="width100 height100" src="images/product/product4.jpg" alt="product">
+                                                </a>
+                                                <ul class="product-action d-flex position-absolute transition-3">
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Cart">
+                                                        <a href="cart.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-shopping-cart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Wishlist">
+                                                        <a href="wishlist.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-heart"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Add to Compare">
+                                                        <a href="product-details.html" class="text-center mb-10 white-bg primary-color d-block">
+                                                            <span><i class="far fa-repeat"></i></span>
+                                                        </a>
+                                                    </li>
+                                                    <li data-toggle="tooltip" data-placement="top" title="Quick view">
+                                                        <a href="#" class="text-center mb-10 white-bg primary-color d-block" data-toggle="modal" data-target="#product-modal">
+                                                            <span><i class="far fa-expand-wide"></i></span>
+                                                        </a>
+                                                    </li>
+                                                </ul><!-- /view-btn -->
+                                            </div><!-- /single-product-img -->
+                                            <div class="single-product-info position-relative mt-25">
+                                                <h6><a href="product-details.html">Annie Natural Storage Cabinet</a></h6>
+                                                <ul class="single-product-price d-flex transition-3">
+                                                    <li>
+                                                        <span class="primary-color">$86.88</span>
+                                                    </li>
+                                                </ul><!-- /single-product-price -->
+                                            </div>
+                                        </div><!-- /single-product -->
+                                    </div>
+                                </div><!-- /col -->
+                            </div><!-- /row -->
+                        </div>
+                    </div><!-- /product-content -->
+                </div><!-- /container -->
+            </div>
+            <!-- best-seller-product-area-end  -->
 
-	
-		
-		{{!-- Hotels section --}}
+            <!-- ====== service-area-start ========================================= -->
+            <div class="service-area border-t-gray border-b-gray pt-45 pb-20 mb-80">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
+                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
+                                <div class="s-ser-icon mr-15">
+                                    <span class="theme-color flaticon-delivery-truck"></span>
+                                </div>
+                                <div class="s-ser-content">
+                                    <h5 class="mb-1">Free Transport</h5>
+                                    <p class="mb-0">Order Over $100</p>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
+                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
+                                <div class="s-ser-icon mr-15">
+                                    <span class="theme-color flaticon-redo"></span>
+                                </div>
+                                <div class="s-ser-content">
+                                    <h5 class="mb-1">Money Back</h5>
+                                    <p class="mb-0">Order Over $100</p>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
+                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
+                                <div class="s-ser-icon mr-15">
+                                    <span class="theme-color flaticon-shield"></span>
+                                </div>
+                                <div class="s-ser-content">
+                                    <h5 class="mb-1">Trusted & Security</h5>
+                                    <p class="mb-0">Order Over $100</p>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
+                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
+                                <div class="s-ser-icon mr-15">
+                                    <span class="theme-color flaticon-tools"></span>
+                                </div>
+                                <div class="s-ser-content">
+                                    <h5 class="mb-1">24/7 Support</h5>
+                                    <p class="mb-0">Order Over $100</p>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                </div><!-- /container -->
+            </div>
+            <!-- service-area-end  -->
 
-{{!-- <section class="ftco-section">
- <div class="container">
-	<div class="row justify-content-center pb-4">
-		<div class="col-md-12 heading-section text-center ftco-animate">
-			<span class="subheading">HOTELS</span>
-			<h2 class="mb-4">Most rated hotels</h2>
-		</div>
-	</div>
-  <div class="row">
-   <div class="col-md-4 ftco-animate">
-    <div class="project-wrap hotel">
-     <a href="#" class="img" style="background-image: url(/main/images/hotel-resto-1.jpg);">
-      <span class="price">$200/person</span>
-    </a>
-    <div class="text p-4">
-      <p class="star mb-2">
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
-      </p>
-      <span class="days">8 Days Tour</span>
-      <h3><a href="#">Manila Hotel</a></h3>
-      <p class="location"><span class="fa fa-map-marker"></span> Manila, Philippines</p>
-      <ul>
-       <li><span class="flaticon-shower"></span>2</li>
-       <li><span class="flaticon-king-size"></span>3</li>
-       <li><span class="flaticon-mountains"></span>Near Mountain</li>
-     </ul>
-   </div>
- </div>
-</div>
+            <!-- ====== subscribe-area-start ========================================= -->
+            <div class="subscribe-area pt-75 pb-25 wow slideInUp" data-background="images/bg/subscribe-bg.jpg">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-5  col-lg-4  col-md-12  col-sm-12 col-12">
+                            <div class="section-title  mb-50">
+                                <span class="theme-color d-block pb-2">Get More Updates</span>
+                                <h3>Our Newsletters</h3>
+                            </div><!-- /section-title -->
+                        </div><!-- /col -->
+                        <div class="col-xl-7  col-lg-8  col-md-12  col-sm-12 col-12">
+                            <div class="subscribe-form-area subscribe-form-area1 mb-50">
+                                <form action="#" class="d-sm-flex align-items-center justify-content-between">
+                                    <div class="subscribe-info position-relative mr-20">
+                                        <input class="sub-name form-control border-0 pl-35 theme-color" type="email" name="name" id="sub-name" placeholder="Enter Your Email Address">
+                                    </div>
+                                   <div class="subscribe-btn">
+                                    <a href="#" class="web-btn d-block theme-bg white text-uppercase over-hidden position-relative plr-48 px-5">
+                                        Subscribe Now<span class="pl-2"><i class="fas fa-long-arrow-alt-right"></i></span>
+                                    </a>
+                                   </div>
+                                </form>
+                            </div>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                </div><!-- /container -->
+            </div>
+            <!-- subscribe-area-end  -->
 
-</div>
-</div>
-</section> --}}
+            <!-- ====== blog-area-start=============================================== -->
+            <div class="blog-area mt-75 pb-50">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
+                            <div class="section-title text-center">
+                                <span class="theme-color d-block pb-2">Popular News</span>
+                                <h3>Latest News & Blog</h3>
+                            </div><!-- /section-title -->
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                    <div class="row news-post-active mt-50">
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="blog-details.html"><img class="img-zoom width100 height100" src="images/blog/blog-img1.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-2 d-block" href="blog-details.html">Smashing Podcast Episode 11 With Eduardo Bouças Is Sourcebit</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="blog-details.html"><img class="img-zoom width100 height100" src="images/blog/blog-img2.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-10 d-block" href="blog-details.html">Avoid Keyboard Event-Related Bugs Browser-Based Transliteration</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center mt-10">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="blog-details.html"><img class="img-zoom width100 height100" src="images/blog/blog-img3.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-10 d-block" href="blog-details.html">Design Decisions With Neville Brody Design Cannot Remain Neutral</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center mt-10">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="#"><img class="img-zoom width100 height100" src="images/blog/blog-img1.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-10 d-block" href="#">Smashing Podcast Episode 11 With Eduardo Bouças Is Sourcebit</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center mt-10">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="#"><img class="img-zoom width100 height100" src="images/blog/blog-img2.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-10 d-block" href="#">Avoid Keyboard Event-Related Bugs Browser-Based Transliteration</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center mt-10">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                        <div class="col-xl-4  col-lg-4  col-md-4  col-sm-12 col-12">
+                            <div class="single-blog mb-30">
+                                <div class="blog-img over-hidden transition-3">
+                                    <a href="#"><img class="img-zoom width100 height100" src="images/blog/blog-img3.jpg" alt=""></a>
+                                </div>
+                                <div class="single-blog-content bg-white pt-25">
+                                    <ul class="single-blog-info d-flex mb-10">
+                                        <li class="date pr-25">
+                                            <a href="#" class="text-uppercase gray-color2">
+                                                <span class="pr-1"><i class="fal fa-calendar-alt"></i></span>
+                                                <span> 25</span>
+                                                <span> dec</span>
+                                                <span> 2021</span>
+                                            </a>
+                                        </li>
+                                        <li class="comment">
+                                            <a href="#" class="text-uppercase gray-color2 hvr">
+                                                <span class="pr-1"><i class="fal fa-comments"></i></span>
+                                                <span>Comment(05)</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h5><a class="pb-10 d-block" href="#">Design Decisions With Neville Brody Design Cannot Remain Neutral</a></h5>
+                                    <p class="pb-1">Sed perspiciatis unde omnis iste natus error 
+                                        voluptatem accusantium doloremque</p>
+                                    <ul class="blogger d-flex align-items-center mt-10">
+                                        <li>
+                                            <img class="mr-2" src="images/blog/blog-author.png" alt="">
+                                        </li>
+                                        <li>
+                                            <span class="primary-color"><span class="gray-color2">By</span> David Warner</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                </div><!-- /container -->
+            </div>
+            <!-- blog-area-end -->
 
-		{{!-- /hotels section --}}
+            <!-- ====== brand-logo-area-start ========================================= -->
+            <div class="brand-logo-area bg-white over-hidden">
+                <div class="container border-t-gray pt-75 pb-75">
+                    <div class="mlr--60">
+                        <div class="row brand-active d-flex align-items-center justify-content-lg-between">
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand1.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand2.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand3.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand4.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand5.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand6.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand3.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-12  col-lg-2  col-md-2  col-sm-2 col-2">
+                                <div class="text-center">
+                                    <a href="#" class="d-block p-1">
+                                        <img class="d-inline-block" src="images/brand/brand5.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- /brand-active -->
+                    </div>
+                </div><!-- /container -->
+            </div>
+            <!-- brand-logo-area-end  -->
 
-		{{!-- <section class="ftco-section testimony-section bg-bottom" style="background-image: url(/main/images/bg_1.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row justify-content-center pb-4">
-					<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-						<span class="subheading">Testimonial</span>
-						<h2 class="mb-4">Tourist Feedback</h2>
-					</div>
-				</div>
-				<div class="row ftco-animate">
-					<div class="col-md-12">
-						<div class="carousel-testimony owl-carousel">
-							
-							
-							<div class="item">
-								<div class="testimony-wrap py-4">
-									<div class="text">
-										<p class="star">
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
-										</p>
-										<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url(/main/images/person_2.jpg)"></div>
-											<div class="pl-3">
-												<p class="name">Roger Scott</p>
-												<span class="position">Marketing Manager</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section> --}}
 
+            <!-- Modal start -->
+            <div class="modal fade" id="product-modal" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered product-modal my-" role="document">
+                    <div class="modal-content product-modal pt-30 pb-30">
+                        <div class="modal-body pt-0 px-0">
+                            <div class="row">
+                                <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
+                                    <!-- product-details-tab-area start -->
+                                    <div class="product-details-content pl-20 pr-20">
+                                        <div class="single-product-tab-content main-tab-content tab-content pt-19" id="myTabContent10">
+                                            <div class="row">
+                                                <div class="col-xl-6  col-lg-6  col-md-12  col-sm-12 col-12">
+                                                    <div class="product-left-img-tab"> 
+                                                        <div class="tab-content width100 text-center mt-30 position-relative" id="v-pills-tabContent10">
+                                                            <div class="tab-pane fade show active" id="v-pills-home10" role="tabpanel" aria-labelledby="v-pills-home-tab10">
+                                                                <div class="product-gallery-btn position-absolute right-site">
+                                                                    <a href="images/product-details/prduct-detl-large-img5.jpg" class="zoom-gallery dark-black-color bg-white d-inline-block m-2 " data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="images/product-details/prduct-detl-large-img5.jpg" alt=""></a>                            
+                                                                </div><!-- /product-gallery-btn -->
+                                                                <div class="product-img">
+                                                                    <img  class="width100 height100" src="images/product-details/prduct-detl-large-img5.jpg" alt="">
+                                                                </div><!-- /product-img -->
+                                                            </div>
+                                                            <div class="tab-pane fade" id="v-pills-profile10" role="tabpanel" aria-labelledby="v-pills-profile-tab10">
+                                                                <div class="product-gallery-btn position-absolute right-site">
+                                                                    <a href="images/product-details/prduct-detl-large-img6.jpg" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="images/product-details/prduct-detl-large-img6.jpg" alt=""></a> 
+                                                                </div><!-- /product-gallery-btn -->
+                                                                <div class="product-img"> 
+                                                                    <img class="width100" src="images/product-details/prduct-detl-large-img6.jpg" alt="">                                 
+                                                                </div><!-- /product-img -->
+                                                            </div>
+                                                            <div class="tab-pane fade" id="v-pills-messages10" role="tabpanel" aria-labelledby="v-pills-messages-tab10">
+                                                                <div class="product-gallery-btn position-absolute right-site">
+                                                                    <a href="images/product-details/prduct-detl-large-img11.jpg" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="images/product-details/prduct-detl-large-img11.jpg" alt=""></a>
+                                                                </div><!-- /product-gallery-btn -->
+                                                                <div class="product-img"> 
+                                                                    <img class="width100" src="images/product-details/prduct-detl-large-img11.jpg" alt="">                                     
+                                                                </div><!-- /product-img -->
+                                                            </div>
+                                                        </div><!-- /tab-content -->
+                                                        <div class="nav product-tabs pt-20" id="v-pills-tab10" role="tablist" aria-orientation="vertical">
+                                                            <a class="nav-link  show active mr-20" id="v-pills-home-tab10" data-toggle="pill" href="#v-pills-home10" role="tab" aria-controls="v-pills-home10" aria-selected="true">
+                                                                <img class="product-thumbnail" src="images/product-details/prduct-detl-thamb5.jpg" alt="">
+                                                            </a>
+                                                            <a class="nav-link mr-20" id="v-pills-profile-tab10" data-toggle="pill" href="#v-pills-profile10" role="tab" aria-controls="v-pills-profile10" aria-selected="false">
+                                                                <img class="product-thumbnail" src="images/product-details/prduct-detl-thamb6.jpg" alt="">
+                                                            </a>
+                                                            <a class="nav-link mr-20" id="v-pills-messages-tab10" data-toggle="pill" href="#v-pills-messages10" role="tab" aria-controls="v-pills-messages10" aria-selected="false">
+                                                                <img class="product-thumbnail" src="images/product-details/prduct-detl-thamb11.jpg" alt="">
+                                                            </a>
+                                                        </div><!-- /nav product-tabs -->
+                                                    </div><!-- /product-left-img-tab -->
+                                                </div><!-- /col -->
+                                                <div class="col-xl-6  col-lg-6  col-md-12  col-sm-12 col-12">
+                                                    <div class="product-view-info mt-30">
+                                                        <div class="product-left-img-info">
+                                                            <h3>Willmann Concrete <br> & Glass Vase</h3>
+                                                            <div class="rating rating-shop d-flex align-items-center mt-15">
+                                                                <ul class="d-flex mr-2">
+                                                                    <li>
+                                                                        <span class="theme-color2"><i class="fas fa-star"></i></span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="theme-color2"><i class="fas fa-star"></i></span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="theme-color2"><i class="fas fa-star"></i></span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="theme-color2"><i class="fas fa-star"></i></span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="theme-color2"><i class="fad fa-star-half-alt"></i></span>
+                                                                    </li>
+                                                                </ul>
+                                                                <span class="gray-color2">(05 Reviews)</span>
+                                                            </div>
+                                                            <div class="price pb-18 pt-3">
+                                                                <span class="rc-price font700">$250.99</span>
+                                                            </div>
+                                                            <div class="p-info-text pr-55">
+                                                                <p class="gray-color2">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms</p>
+                                                                <p class="gray-color2 pt-10">But I must explain to you how all this mistaken idea of denouncing pleasure</p>
+                                                            </div>
+                                                            <div class="all-info d-sm-flex align-items-center mt-35">
+                                                                <div class="quick-add-to-cart d-sm-flex align-items-center">
+                                                                    <div class="quantity-field position-relative d-inline-block mt-15 mr-3">
+                                                                        <input type="text" name="select1" value="0" class="quantity-input-arrow quantity-input shop-border2 dark-black-color text-center"> 
+                                                                    </div>
+                                                                    <div class="quick-add-to-cart d-sm-flex align-items-center mr-15 mt-15">
+                                                                        <a href="cart.html" class="web-btn d-inline-block theme-bg border-theme02 white text-uppercase over-hidden position-relative ptb-19 pl-30 pr-30 rounded-0">add to CART 
+                                                                            <span class="ml-1"><span class="icon-plus"></span></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div><!-- /quick-add-to-cart -->
+                                                            </div>
+                                                            <ul class="single-product-list-button d-flex align-items-center mt-25 mb-45">
+                                                                <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist">
+                                                                    <a href="wishlist.html" class="d-block shop-border2 primary-list-color transition-3 text-center mr-12"><span><i class="far fa-heart"></i></span></a>
+                                                                </li>
+                                                                <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist">
+                                                                    <a href="shop.html" class="d-block shop-border2 primary-list-color transition-3 text-center mr-12"><span><i class="far fa-search"></i></span></a>
+                                                                </li>
+                                                                <li data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Wishlist">
+                                                                    <a href="shop.html" class="d-block shop-border2 primary-list-color transition-3 text-center mr-12"><span><i class="fas fa-compress"></i></span></a>
+                                                                </li>
+                                                            </ul><!-- /single-product-list-button -->
+                                                            <ul class="review-cat review-cat2  d-sm-flex align-items-center pb-20">
+                                                                <li class="mb-1 mb-2 mr-6 d-inline-block position-static">
+                                                                    <span class="cat-title dark-black-color font600">Categories :</span>
+                                                                </li>
+                                                                <li class="mr-6 mb-2 d-inline-block position-relative">
+                                                                    <a href="shop.html" class="gray-color2 font600">Mask,</a>
+                                                                </li>
+                                                                <li class="mr-6 mb-2 d-inline-block position-relative">
+                                                                    <a href="shop.html" class="gray-color2 font600">Covid -19,</a>
+                                                                </li>
+                                                                <li class="mr-6 mb-2 d-inline-block position-relative">
+                                                                    <a href="shop.html" class="gray-color2 font600">Sanitizer,</a>
+                                                                </li>
+                                                                <li class="mr-6 mb-2 d-inline-block position-relative">
+                                                                    <a href="shop.html" class="gray-color2 font600">Facemask</a>
+                                                                </li>
+                                                            </ul><!-- /review-cat -->
+                                                            <ul class="social-link">
+                                                                <li class="d-block d-sm-inline-block mr-12">
+                                                                    <span class="cat-title dark-black-color font600">Share Now:</span>
+                                                                </li>
+                                                                <li class="d-inline-block" data-toggle="tooltip" data-selector="true" data-placement="bottom" title="Facebook">
+                                                                        <a class="d-inline-block transition-3 gray-color2 shop-border2 text-center" href="#">
+                                                                        <i class="fab fa-facebook-f"></i>
+                                                                        </a>
+                                                                </li>
+                                                                <li class="d-inline-block"  data-toggle="tooltip" data-selector="true" data-placement="bottom" title="Instagram">
+                                                                    <a class="d-inline-block transition-3 gray-color2 shop-border2 text-center" href="#">
+                                                                        <i class="fab fa-instagram"></i>
+                                                                        </a>
+                                                                </li>
+                                                                <li class="d-inline-block"  data-toggle="tooltip" data-selector="true" data-placement="bottom" title="Twitter">
+                                                                    <a class="d-inline-block transition-3 gray-color2 shop-border2 text-center" href="#">
+                                                                        <i class="fab fa-twitter"></i>
+                                                                        </a>
+                                                                </li>
+                                                                <li class="d-inline-block"  data-toggle="tooltip" data-selector="true" data-placement="bottom" title="Google plus">
+                                                                    <a class="d-inline-block transition-3 gray-color2 shop-border2 text-center" href="#">
+                                                                        <i class="fab fa-google"></i>
+                                                                        </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /col -->
+                                            </div><!-- /row -->
+                                        </div>
+                                    </div><!-- /product-content -->
+                                    <!-- product-details-tab-area end -->
+                                </div><!-- /col -->
+                            </div><!-- /row -->
+                        </div>
+                    </div>
+                    <button type="button" class="close position-absolute f-flex-align-items-center justify-content-center text-white dark-black-bg" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><span class="icon-close"></span></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Modal end -->
 
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row justify-content-center pb-4">
-					<div class="col-md-12 heading-section text-center ftco-animate">
-						<span class="subheading">Our Blog</span>
-						<h2 class="mb-4">ADVENTURES | STORIES | PEOPLE</h2>
-						<p>EXPLORE WITH EMOTION. LIVE FOR THE JOURNEY.</p>
-
-					</div>
-				</div>
-				<div class="row d-flex">
-					{{#each posts}}
-					<div class="col-md-4 d-flex ftco-animate">
-						<div class="blog-entry">
-							<a href="/blog-single/{{_id}}" class="block-20" style="background-image: url('/uploads/{{photo}}');">
-							</a>
-							<div class="text">
-								<div class="d-flex align-items-center mb-4 topp">
-									<div class="one">
-										<span class="day">{{day createdAt}}&nbsp;</span>
-									</div>
-									<div class="two">
-										<span class="yr">&nbsp;{{year createdAt}}</span>
-										<span class="mos">&nbsp;{{month createdAt}}</span>
-									</div>
-								</div>
-								<h3 class="heading"><a href="#">{{title}}</a></h3>
-								<p>{{postSlice desc}}</p>
-								<p><a href="#" class="btn btn-primary">Read more</a></p>
-							</div>
-						</div>
-					</div>
-				{{/each}}
-				</div>
-
-					<p class="mb-0 text-center"><a href="/blog/?page=1&limit=6" class="btn btn-primary px-4 py-3">Show More</a></p>
-		
-				
-			</div>
-		</section>
-
-		<section class="ftco-intro ftco-section ftco-no-pt">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-12 text-center">
-						<div class="img"  style="background-image: url(/main/images/bg_2.jpg);">
-							<div class="overlay"></div>
-							<h2>“Life is either a daring adventure or nothing at all” ~ Helen Keller</h2>
-							<p>If Helen Keller can look at life as a great adventure, what excuse do the rest of us have? Take a chance and live life to the fullest. When we are at our most daring is when we feel the most fulfillment.</p>
-							<p class="mb-0"><a href="/contact" class="btn btn-primary px-4 py-3">Ask A Question</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
- <script>
-$(document).ready(function(){
-    $("#testimonial-slider").owlCarousel({
-        items:3,
-        itemsDesktop:[1000,3],
-        itemsDesktopSmall:[980,2],
-        itemsTablet:[768,2],
-        itemsMobile:[650,1],
-        pagination:true,
-        navigation:false,
-        slideSpeed:1000,
-        autoPlay:true
-    });
- });
- </script>
-  <script>
-	
-	</script>
-
+        </main>

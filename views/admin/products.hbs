@@ -1,0 +1,346 @@
+<div class="grid-container">
+
+  {{>admin-header}}
+
+  {{>admin-sidebar}}
+
+  <!-- Main -->
+  <main class="main-container">
+    <div class="main-title">
+      <h2>PRODUCTS</h2>
+      <button class="button-9" id="open-modal-button" type="button" data-toggle="modal"
+        data-target="#bd-example-modal-lg">Add new product</button>
+    </div>
+
+
+
+    <div class="charts-products">
+
+      <div class="charts-card">
+        <h2 class="chart-title">All Products</h2>
+        {{!-- <div id="bar-chart"></div> --}}
+        <table class="table table-dark">
+          <thead>
+            <tr>
+
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Usage/Desc</th>
+              <th scope="col">Category</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each products}}
+            <tr>
+              <th scope="row">{{counter @ index}}</th>
+              <td>{{this.name}}</td>
+              <td>{{this.usage}}...</td>
+              <td>{{this.category.name}}</td>
+              {{!-- <td>{{this.material}}</td> --}}
+              <td class="d-flex">
+                <button type="button" class="deleteButton" onclick="deleteProduct('{{this._id}}')">
+
+                  <span class="material-icons-outlined deleteCategory" id="deleteCategoryOne">delete</span>
+
+                </button>
+                <button type="button" class="editButton" data-toggle="modal"
+        data-target="#bd-example-modal-product-lg" id="open-modal-button-edit" 
+        data-product="{{JSONstringify this}}">
+
+                  <span class="material-icons-outlined editProduct" id="deleteCategoryOne">edit</span>
+
+                </button>
+
+
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add new product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="category-form" action="/admin/addNewProduct" method="post" enctype="multipart/form-data">
+              <div class="row add-product-wrapper">
+
+                <div class="col-md-6 form-group">
+                  <label for="category-name">Product name</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="category-name" name="name"
+                    required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="selectCategory">Select category</label>
+                  <select class="custom-select" id="selectCategory" name="category">
+                    <option selected>Open this select menu</option>
+                    {{#each categories}}
+                    <option value={{this._id}}>{{this.name}}</option>
+                    {{/each}} 
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="category-description">Description</label>
+                <textarea class="form-control" rows="3" id="category-description" name="description"
+                  placeholder="Write description..." required></textarea>
+              </div>
+              <div class="row">
+                    <div class="col-md-6">
+                      <label for="formFile">Upload size chart image</label>
+                        <input type="file" name="image" id="sizeChartInput" class="form-control" single> 
+                    </div>
+                    <div class="col-md-6">
+                  
+                      <div id="imageChartPreviewContainer"></div>
+                    </div>
+                    {{!-- <div class="col-2">
+                        <input type="submit" value="Upload Images" class="btn btn-warning">
+                    </div> --}}
+                </div>
+              <div class="row add-product-wrapper">
+
+                <div class="col-md-4 form-group">
+                  <label for="category-name">Color</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="category-name" name="color">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="selectCategory">Dimentions</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="category-name" name="dimentions">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="selectCategory">Material</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="category-name" name="material">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="category-description">Usage</label>
+                <textarea class="form-control" rows="3" id="category-description" name="usage"
+                  placeholder="What is the use of this product..." required></textarea>
+              </div>
+              <div class="row">
+                    <div class="col-md-6">
+                      <label for="formFile">Upload images (select 3 images maximum)</label>
+                        <input type="file" name="images" id="imageInput" class="form-control" multiple> 
+                    </div>
+                   
+                    {{!-- <div class="col-2">
+                        <input type="submit" value="Upload Images" class="btn btn-warning">
+                    </div> --}}
+                </div>
+                 <div >
+                      
+                      <div id="imagePreviewContainer"></div>
+                    </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Modal for edit product -->
+    <div class="modal fade" id="bd-example-modal-product-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="category-form" method="post" enctype="multipart/form-data">
+              <div class="row add-product-wrapper">
+
+                <div class="col-md-6 form-group">
+                  <label for="name">Product name</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="name" name="name"
+                    required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="category">Select category</label>
+                  <select class="custom-select" id="category" name="category">
+                    <option selected>Open this select menu</option>
+                    {{#each categories}}
+                    <option value={{this._id}}>{{this.name}}</option>
+                    {{/each}} 
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" rows="3" id="description" name="description"
+                  placeholder="Write description..." required></textarea>
+              </div>
+
+              <div class="row">
+                    <div class="col-md-6">
+                      <label for="formFile">Upload size chart image</label>
+                        <input type="file" name="image" id="sizeChartInputEdit" class="form-control" single> 
+                    </div>
+                    <div class="col-md-6">
+                  
+                      <div id="imageChartPreviewContainerEdit"></div>
+                    </div>
+
+                    {{!-- <div class="col-2">
+                        <input type="submit" value="Upload Images" class="btn btn-warning">
+                    </div> --}}
+                </div>
+                <input type="hidden" id="hiddenChartImage" name="image" value="">
+
+              <div class="row add-product-wrapper">
+
+                <div class="col-md-4 form-group">
+                  <label for="color">Color</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="color" name="color">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="dimention">Dimentions</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="dimention" name="dimentions">
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="material">Material</label>
+                  <input type="text" class="form-control" placeholder="Category name" id="material" name="material">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="usage">Usage</label>
+                <textarea class="form-control" rows="3" id="usage" name="usage"
+                  placeholder="What is the use of this product..." required></textarea>
+              </div>
+              <div class="row">
+                    <div class="col-md-6">
+                      <label for="formFile">Upload images (select 3 images maximum)</label>
+                        <input type="file" name="images" id="editImageInput" class="form-control" multiple> 
+                    </div>
+                   
+                    {{!-- <div class="col-2">
+                        <input type="submit" value="Upload Images" class="btn btn-warning">
+                    </div> --}}
+                </div>
+                 <div >
+                      
+                      <div id="editImagePreviewContainer"></div>
+                    </div>
+                    <input type="hidden" id="hiddenImages" name="images" value="">
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- End Main -->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function deleteProduct(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/admin/deleteProduct/${id}`);
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+
+        window.location.reload();
+      }
+    })
+    
+  }
+
+  // script.js
+const editButtons = document.querySelectorAll('.editButton');
+const editModal = document.getElementById('bd-example-modal-product-lg');
+const editImagePreviewContainer = document.getElementById('editImagePreviewContainer');
+const imageChartPreviewContainerEdit = document.getElementById('imageChartPreviewContainerEdit');
+const nameInput = editModal.querySelector('#name');
+const categoryInput = editModal.querySelector('#category');
+const descInput = editModal.querySelector('#description');
+const colorInput = editModal.querySelector('#color');
+const materialInput = editModal.querySelector('#material');
+const usageInput = editModal.querySelector('#usage');
+const dimentionInput = editModal.querySelector('#dimention');
+const editImageInput = editModal.querySelector('#editImageInput');
+const sizeChartInputEdit = editModal.querySelector('#sizeChartInputEdit');
+const hiddenImagesInput = editModal.querySelector('#hiddenImages');
+const hiddenChartImage = editModal.querySelector('#hiddenChartImage');
+const form = editModal.querySelector('form');
+
+editButtons.forEach(button => {
+  button.addEventListener('click', event => {
+    console.log("data set",event)
+    const productData = JSON.parse(event.currentTarget.getAttribute('data-product'));
+    console.log("Product data is",productData)
+    nameInput.value = productData.name;
+    categoryInput.value = productData.category._id;
+    descInput.value = productData.description;
+    colorInput.value = productData.color?productData.color:"N/A" ;
+    materialInput.value = productData.material?productData.material:"N/A";
+    usageInput.value = productData.usage;
+    dimentionInput.value = productData.dimention?productData.dimention:"N/A";
+    form.action=`/admin/updateProduct/${productData._id}`
+     // Clear existing images from input and image preview
+    editImageInput.value = ''; // This will clear the file input
+    editImagePreviewContainer.innerHTML = ''; // Clear existing image previews
+sizeChartInputEdit.value="";
+imageChartPreviewContainerEdit.innerHTML = "";
+
+
+   if (productData.images) {
+      hiddenImagesInput.value = productData.images.join(',');
+      
+      // Generate image preview elements
+      for (const imageName of productData.images) {
+        const img = document.createElement('img');
+        img.src = `/uploads/${imageName}`; // Assuming your images are stored in the /public/uploads folder
+        img.classList.add('imagePreview');
+        editImagePreviewContainer.appendChild(img);
+      }
+    }
+    if (productData.sizeChart) {
+      hiddenChartImage.value = productData.sizeChart;
+      
+        const img = document.createElement('img');
+        img.src = `/uploads/${productData.sizeChart}`; // Assuming your images are stored in the /public/uploads folder
+        img.classList.add('imageChartPreview');
+        imageChartPreviewContainerEdit.appendChild(img);
+      
+    }
+  });
+});
+
+</script>

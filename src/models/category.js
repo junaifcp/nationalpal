@@ -5,9 +5,15 @@ const CategorySchema=new mongoose.Schema({
         type:String,
         required:true,
     },
+    description:{
+        type:String
+    },
     count:{
         type:Number,
         default:0
+    },
+    image:{
+        type:String
     }
     },
     {timestamps:true}

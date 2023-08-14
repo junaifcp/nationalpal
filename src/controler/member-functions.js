@@ -60,10 +60,12 @@ module.exports={
             }
         })
     },
+
+
     signAccessToken:(admin)=>{
             return new Promise((resolve,reject)=>{
                 const payload={
-                    name:"Junaif",
+                    name:"Admin",
 
                 }
                 const secret=process.env.SECRET_KEY;
@@ -74,6 +76,9 @@ module.exports={
                 })
             })
     },
+
+
+    
     findHotelCoords:(cityName)=>{
        return new Promise((resolve,reject)=>{
         const options = {

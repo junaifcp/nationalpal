@@ -22,25 +22,22 @@ var validator = require("email-validator");
 const { response } = require('../../app');
 const destCategory = require('../models/destCategory');
 const Destination=require('../../src/models/destination')
-const {validationResult}=require('express-validator')
+const {validationResult}=require('express-validator');
+const Products=require("../models/products");
+const Images=require("../models/images");
+const Categories=require("../models/category");
+const Partners=require("../models/partner");
+const { IMAGE_ID } = require('../../public/data/images');
+
 //Home route starts here
 exports.home=async (req,res)=>{
   
-    const posts=await Post.find().sort({createdAt:-1}).limit(6).lean()
-    const types=await destCategory.find().lean();
+    const products=await Products.find().sort({createdAt:-1}).limit(10).lean()
+    const categories=await Categories.find().sort({createdAt:-1}).lean();
+    const images=await Images.findOne({_id:IMAGE_ID}).lean();
+    const partners=await Partners.find().lean();
     console.log("entereered");
-    memberHelper.getAllMembers().then((members)=>{
-      if(req.cookies.jwt){
-        let users=req.user.toJSON();
-        res.render('index',{users,client:true,members,posts,homeMain:true,types});
-      }else if(req.cookies.memberLoginJwt){
-        let users=req.user.toJSON();
-        res.render('index',{users,member:true,members,posts,homeMain:true,types});
-      }else{
-        console.log("entered here");
-        res.render('index',{client:true,members,posts,homeMain:true,types});
-      } 
-    })
+    res.render('index',{client:true,products,categories,images,partners});
 }
 exports.showAllMembers=async(req,res)=>{
   const limit=parseInt(req.query.limit,10)||6;
@@ -392,19 +389,31 @@ exports.signupUser=async(req,res)=>{
     res.redirect('/dashboard')
     // console.log(member)
   }
+
+
+
+
+
   exports.about=(req,res)=>{
-    let user=req.cookies.jwt;
-    let guide=req.cookies.memberLoginJwt;
-    if(user){
-      let users=req.user.toJSON();
-      res.render('landing/about',{client:true,users})
-    }else if(guide){
-      let users=req.user.toJSON();
-      res.render('landing/about',{member:true,users})
-    }else{
-      res.render('landing/about',{client:true});
-    }  
+    
+      res.render('landing/about')
+   
   }
+
+  exports.shop=(req,res)=>{
+      res.render('landing/shop')
+  }
+  exports.partners=(req,res)=>{
+      res.render('landing/partners')
+  }
+  exports.contactUs=(req,res)=>{
+      res.render('landing/contact-us')
+  }
+
+
+
+
+
   exports.destination=async(req,res)=>{
     let user=req.cookies.jwt;
     let guide=req.cookies.memberLoginJwt;

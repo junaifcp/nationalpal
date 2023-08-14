@@ -40,15 +40,6 @@ const PostSchema=new mongoose.Schema({
     }},
     {timestamps:true}
     );
-    PostSchema.plugin(mongoosePaginate);
-    PostSchema.pre('save',function(next){
-       
-        if(this.markdown){
-       
-            this.sanitizedHtml=DOMPurify.sanitize(marked.parse(this.markdown))
-  
-        }
-        next()
-    })
+    
 
 module.exports=mongoose.model("Post",PostSchema);
