@@ -9,7 +9,6 @@ const qs = require("querystring");
 const cors=require('cors');
 const methodOverride = require('method-override');
 var helpers = require('handlebars-helpers')();
-const nodemailer=require('nodemailer')
 const auth=require('./src/middleware/userAuth')
 // const {validator} = require('express-validator');
 
@@ -23,12 +22,7 @@ const bodyparser = require('body-parser')
 // const User=require('./src/models/user-register')
 const hbs=require('hbs');
 
-const categoryRouter=require('./routes/categories')
-const destCategoriesRouter=require('./routes/destCategories')
-var postRouter = require('./routes/posts')
-var destinationRouter = require('./routes/destinations')
 var adminRouter = require('./routes/admin')
-var membersRouter = require('./routes/members');
 var usersRouter = require('./routes/users');
 const { data } = require('jquery');
 
@@ -227,24 +221,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('uploads',express.static(path.join(__dirname,'uploads')))
 // app.use(express.static(imagesPath))
 // app.use(express.static(siteImages))
-app.use('/api/destCategories',destCategoriesRouter)
-app.use('/api/destinations',destinationRouter)
-app.use('/api/categories',categoryRouter)
-app.use('/api/posts',postRouter)
 app.use('/admin',adminRouter)
-app.use('/members', membersRouter);
 app.use('/', usersRouter)
 // app.use('/', rootRouter);
 app.use('*',auth,(req,res)=>{
   const admin=req.cookies.adminToken;
   const user=req.cookies.jwt;
-  const guide=req.cookies.memberLoginJwt;
   if(user){
-   res.redirect('/dashboard')
-  }else if(guide){
-    res.redirect('/members/dashboard')
+   res.redirect('/')
   }else if(admin){
-     res.redirect('/admin/dashboard')
+     res.redirect('/')
   }else{
 
     res.render('404',{error:true})

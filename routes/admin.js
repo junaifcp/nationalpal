@@ -51,15 +51,5 @@ router.get('/deleteProduct/:id',store.array('images',12),controler.deleteProduct
 router.post('/uploadImage/:id',store.array('images',12),controler.uploadImage);
 router.get('/messages',controler.userMessages);
 
-router.get('/dashboard/delete-user/:id',controler.deleteUser);
-router.get('/dashboard/delete-guide/:id',controler.deleteGuide);
-router.get('/dashboard/delete-post/:id',controler.deletePost);
-router.get('/dashboard/block-user/:id',controler.blockUser);
-router.get('/dashboard/block-guide/:id',controler.blockGuide);
-router.get('/tourists-all',auth,controler.touristsAll);
-router.get('/guides-all',auth,controler.guidesAll);
-router.get('/posts-all',auth,controler.postsAll);
-router.get('/payments-all',auth,controler.paymentsAll);
-router.get('/destination',auth,controler.destination);
 // router.get('/dashboard/unblock-user/:id',controler.blockUser);
 module.exports = router;
