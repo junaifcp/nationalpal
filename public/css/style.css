@@ -171,7 +171,9 @@ li {
 .width100 {
 	width: 100%;
 }
-
+.borderBlack{
+border: 0.5px solid rgb(123, 123, 123);
+}
 .height100 {
 	height: 100%;
 }
@@ -198,9 +200,18 @@ li {
 .z-index11 {
 	z-index: 11;
 }
-
+.imagePreview {
+	width: 95px;
+	height: 95px;
+	margin: 5px;
+	object-fit: cover;
+  }
 .over-scroll {
 	overflow: scroll;
+}
+.pagination a.active {
+	background-color: #007bff;
+	color: #fff;
 }
 
 .over-x-hidden {
@@ -1153,6 +1164,9 @@ input:focus-visible {
 	position: absolute;
 	right: -150px;
 }
+.slider-img-home{
+	border-radius: 50;
+}
 
 
 /* heme2 slider */
@@ -1584,7 +1598,7 @@ input:focus-visible {
 
 .product-action li a {
 	font-size: 15px;
-	width: 40px;
+	width: 150px;
 	height: 40px;
 	line-height: 40px;
 	margin-right: 8px;
@@ -1720,7 +1734,10 @@ input:focus-visible {
 	font-size: 18px;
 	font-weight: 500;
 }
-
+.buttonNoneStyle{
+	border: none;
+	background: transparent;
+}
 .single-service:hover .s-ser-icon span,
 .brand-logo-area img:hover,
 .product-items-active li:hover img {
@@ -2742,7 +2759,9 @@ html .ui-button.ui-state-disabled:active {
 	line-height: 70px;
 	border-radius: 50%;
 }
-
+.color-red{
+	color: rgb(244, 76, 76);
+}
 .contact-icon {
 	font-size: 40px;
 }

@@ -1,0 +1,140 @@
+<div class="grid-container">
+
+  {{>admin-header}}
+
+  {{>admin-sidebar}}
+
+  <!-- Main -->
+  <main class="main-container">
+    <div>
+      {{>message}}
+    </div>
+    <div class="main-title">
+      <h2>BRANCHES</h2>
+      <button class="button-9" id="open-modal-button" type="button" data-toggle="modal"
+        data-target="#exampleModalCenter">Add new branch</button>
+    </div>
+
+
+
+    <div class="charts-products">
+
+      <div class="charts-card">
+        <h2 class="chart-title">All Branches</h2>
+        {{!-- <div id="bar-chart"></div> --}}
+        <table class="table table-dark">
+          <thead>
+            <tr>
+
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Location</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each branches}}
+            <tr>
+              <th scope="row">{{counter @ index}}</th>
+              <td>{{this.name}}</td>
+             
+              <td>{{this.location}}</td>
+              <td>{{this.email}}</td>
+              <td>{{this.mobile}}</td>
+              <td>
+                <button type="button" class="deleteButton" onclick="deleteBranch('{{this._id}}')">
+
+                  <span class="material-icons-outlined deleteCategory" id="deleteCategoryOne">delete</span>
+
+                </button>
+
+
+              </td>
+              <td></td>
+            </tr>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    {{!-- modal content start here --}}
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add new branch</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="category-form" action="/admin/addNewBranch" method="post"> 
+              <div class="form-group">
+                <label for="category-name">Branch name</label>
+                <input type="text" class="form-control" placeholder="Branch name" id="category-name" name="name"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="category-name">Branch location</label>
+                <input type="text" class="form-control" placeholder="Branch location" id="category-name" name="location"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="category-name">Email address</label>
+                <input type="email" class="form-control" placeholder="Enter Email address" id="category-name" name="email"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="category-name">Mobile number</label>
+                <input type="text" class="form-control" placeholder="Enter mobile" id="category-name" name="mobile"
+                  required>
+              </div>
+
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- End Main -->
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function deleteBranch(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/admin/deleteBranch/${id}`);
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+
+        window.location.reload();
+      }
+    })
+    
+  }
+</script>

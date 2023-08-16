@@ -48,6 +48,33 @@ var handlebars = require('express-handlebars').create({
   defaultLayout: 'layout',
   extname: 'hbs',
   helpers:{
+    productCounder:(currentPage,productsPerPage,totalProducts )=>{
+      let itemOne = currentPage * productsPerPage-productsPerPage+1;
+      let itemTwo = Math.min(currentPage*productsPerPage,totalProducts);
+      return `Showing ${itemOne} - ${itemTwo} of ${totalProducts} products`;
+      },
+      isEqualTo:(page,current)=>{
+        console.log(">>>>>>>>>>>",page)
+        console.log(">>>>>>>>>>>",current)
+        if(page == current){
+          return true
+        }else{
+          return false
+        }
+      },
+      ifIndexZero:(index)=>{
+        console.log("INdesc>>",index)
+        if(index===0){
+          return true
+        }else{
+          return false
+        }
+      },
+      isEqual:function(arg1, arg2, options) {
+        console.log(">>>>>>>>>>>",arg1)
+        console.log(">>>>>>>>>>>",arg2)
+        return arg1 === arg2 ? options.fn(this) : options.inverse(this);
+    },
      ifCond:(v1,v2,options)=>{
       if(v1 === v2) {
         return options.fn(this);
@@ -57,6 +84,7 @@ var handlebars = require('express-handlebars').create({
      toJSON : function(object) {
       return JSON.stringify(object);
     },
+    
     date:function(date) {
       var d = new Date(date),
               month = '' + (d.getMonth() + 1),
@@ -174,6 +202,7 @@ app.engine('hbs',handlebars.engine)
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'hbs');
 
+
 //register partials
 // const partials_path=path.join(__dirname,"./templates/partials")
 // hbs.registerPartials(partials_path)
@@ -223,6 +252,7 @@ app.use('*',auth,(req,res)=>{
 })
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+
   next(createError(404));
 });
 

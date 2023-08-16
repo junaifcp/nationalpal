@@ -53,7 +53,7 @@
                         </div><!-- /col -->
                         <div class="col-xl-5  col-lg-6  col-md-12 col-sm-12 col-12">
                             <div class="about-right mb-90">
-                                <img src="images/about/abou-img.jpg" alt="">
+                                <img src="/uploads/{{images.aboutUsMain}}" alt="">
                             </div>
                         </div><!-- /col -->
                     </div><!-- /row -->
@@ -65,7 +65,7 @@
             <div class="about-us-video-area mt-30">
                 <div class="container-wrapper extra-padding-15">
                     <div class="about-us-video about-video-bg position-relative">
-                        <img class="d-block" src="images/about/video-bg.jpg" alt="">
+                        <img class="d-block" src="/uploads/{{images.aboutUsVideoBg}}" alt="video-bg">
                         <a data-fancybox="" class="video-player-btn circle-animation position-absolute" href="https://www.youtube.com/watch?v=f2Q6jbHR0d4">
                             <i class="fas fa-play"></i>
                         </a>
@@ -81,7 +81,7 @@
                         <div class="col-xl-7 col-lg-6 col-md-12 col-12">
                             <div class="about-quote-wrapper-2">
                                 <blockquote>
-                                    <img src="images/about/quotation.png" alt="">
+                                    <img src="images/about/quotation.png" alt="video-bg">
                                     <p>We know that good tech matters to build our future.</p>
                                 </blockquote>
                             </div>
@@ -97,38 +97,34 @@
             <!-- about-ser-information-area-end -->
 
             <!-- ====== testimonial-area-start ========================================= --> 
-            <div class="testimonial-area testimonial-bg pt-130 pb-150" data-background="images/about/testi-bg.jpg">
+            <div class="testimonial-area testimonial-bg pt-130 pb-150" data-background="/uploads/{{images.aboutUsWall}}">
                 <div class="container">
                     <div class="testimonial-active">
                         <div class="row align-items-center pb-55">
                             <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
                                 <div class="user-comment text-center">
-                                    <div class="testi-author">
-                                        <img class="d-inline-block mb-20" src="images/product-details/client-avater2.png" alt="">
+                                    {{!-- <div class="testi-author">
+                                        <img class="d-inline-block mb-20" src="/images/product-details/client-avater2.png" alt="">
                                         <h6 class="author-name font500 pb-1 text-white">Dason K. Aanato
                                         <span class="author-p font400 d-block pt-2">Ceo &amp; Co</span></h6>
-                                    </div>
+                                    </div> --}}
                                     <div class="quit text-white mt-40"><i class="fas fa-quote-right"></i></div>
                                         <blockquote class="testimonials-text mt-25 pr-80 pl-80 text-white font300">
-                                        “ For me the most important part of improving at photography has been sharing it. <br>
-                                        Sign up for an Exposure account, or post regularly to Tumblr, or both. Tell people you’re photography. Minimalist approach, bright colors, abstract shapes and curved lines are the defining features of these <br>
-                                        products designed to be extremely functional, user-friendly and fun. ”</blockquote>
+                                        “ Exceptional quality and reliability define our experience with ACME Electrical Conduits. Their diverse range of products offers top-tier solutions for every project. We trust ACME for their consistent performance, enhancing our electrical installations. ”</blockquote>
                                 </div>
                             </div><!-- /col -->
                         </div><!-- /row -->
                         <div class="row align-items-center pb-55">
                             <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
                                 <div class="user-comment text-center">
-                                    <div class="testi-author">
+                                    {{!-- <div class="testi-author">
                                         <img class="d-inline-block mb-20" src="images/product-details/client-avater1.png" alt="">
                                         <h6 class="author-name font500 pb-1 text-white">Aasen Hnato
                                         <span class="author-p font400 d-block pt-2">Ceo &amp; Co</span></h6>
-                                    </div>
+                                    </div> --}}
                                     <div class="quit text-white mt-40"><i class="fas fa-quote-right"></i></div>
                                         <blockquote class="testimonials-text mt-25 pr-80 pl-80 text-white font300">
-                                        “ For me the most important part of improving at photography has been sharing it. <br>
-                                        Sign up for an Exposure account, or post regularly to Tumblr, or both. Tell people you’re photography. Minimalist approach, bright colors, abstract shapes and curved lines are the defining features of these <br>
-                                        products designed to be extremely functional, user-friendly and fun. ”</blockquote>
+                                            “ Exceptional quality and innovation! Our projects rely on the reliability and durability of your electrical and conduit products. Your solutions have transformed our installations, ensuring seamless performance and safety. Thank you for being our trusted partner in powering progress”</blockquote>
                                 </div>
                             </div><!-- /col -->
                         </div><!-- /row -->
@@ -138,13 +134,13 @@
             <!-- testimonial-area-end  -->
 
             <!-- ====== subscribe-area-start ========================================= -->
-            <div class="subscribe-area pt-75 pb-25 wow slideInUp" data-background="images/bg/subscribe-bg.jpg">
+            <div class="subscribe-area pt-75 pb-25 wow slideInUp" data-background="/uploads/{{images.newsLetterBg}}">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-5  col-lg-4  col-md-12  col-sm-12 col-12">
                             <div class="section-title  mb-50">
-                                <span class="theme-color d-block pb-2">Get More Updates</span>
-                                <h3>Our Newsletters</h3>
+                                <span class="theme-color d-block pb-2">Get More Updates </span>
+                                <h3>Subscribe to our news letter</h3>
                             </div><!-- /section-title -->
                         </div><!-- /col -->
                         <div class="col-xl-7  col-lg-8  col-md-12  col-sm-12 col-12">
@@ -167,55 +163,6 @@
             <!-- subscribe-area-end  -->
 
             <!-- ====== service-area-start ========================================= -->
-            <div class="service-area pt-90 mb-65">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
-                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
-                                <div class="s-ser-icon mr-15">
-                                    <span class="theme-color flaticon-delivery-truck"></span>
-                                </div>
-                                <div class="s-ser-content">
-                                    <h5 class="mb-1">Free Transport</h5>
-                                    <p class="mb-0">Conditions Apply</p>
-                                </div>
-                            </div>
-                        </div><!-- /col -->
-                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
-                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
-                                <div class="s-ser-icon mr-15">
-                                    <span class="theme-color flaticon-redo"></span>
-                                </div>
-                                <div class="s-ser-content">
-                                    <h5 class="mb-1">Money Back</h5>
-                                    <p class="mb-0">Conditions Apply</p>
-                                </div>
-                            </div>
-                        </div><!-- /col -->
-                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
-                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
-                                <div class="s-ser-icon mr-15">
-                                    <span class="theme-color flaticon-shield"></span>
-                                </div>
-                                <div class="s-ser-content">
-                                    <h5 class="mb-1">Trusted & Security</h5>
-                                    <p class="mb-0">Conditions Apply</p>
-                                </div>
-                            </div>
-                        </div><!-- /col -->
-                        <div class="col-xl-3  col-lg-3  col-md-6  col-sm-6 col-12">
-                            <div class="single-service d-flex align-items-center justify-content-lg-center mb-25">
-                                <div class="s-ser-icon mr-15">
-                                    <span class="theme-color flaticon-tools"></span>
-                                </div>
-                                <div class="s-ser-content">
-                                    <h5 class="mb-1">24/7 Support</h5>
-                                    <p class="mb-0">Conditions Apply</p>
-                                </div>
-                            </div>
-                        </div><!-- /col -->
-                    </div><!-- /row -->
-                </div><!-- /container -->
-            </div>
-            <!-- service-area-end  -->
+            {{>serviceArea}}
+            
         </main>

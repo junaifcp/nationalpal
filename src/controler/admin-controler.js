@@ -4,7 +4,9 @@ const Member=require('../../src/models/member-register');
 const Categories=require('../../src/models/category');
 const Partners=require('../../src/models/partner');
 const Images=require('../../src/models/images');
+const Branches=require('../../src/models/branch');
 const Products=require('../../src/models/products');
+const Messages=require('../../src/models/userMessages');
 const Post=require('../../src/models/post');
 const Payment=require('../../src/models/payments');
 const Contact=require('../../src/models/contact-register');
@@ -17,13 +19,30 @@ const fs = require('fs');
 const path = require('path');
 const {IMAGE_ID}=require("../../public/data/images")
 
-exports.admin=(req, res)=>{
-    res.render('admin/login',{adminLogin:true})
+exports.admin=async(req, res)=>{
+  try {
+    const categories=await Categories.find().sort({createdAt:-1}).lean();
+    const midIndex = Math.ceil(categories.length / 2);
+    const categories1 = categories.slice(0, midIndex);
+  const categories2 = categories.slice(midIndex);
+  const branches = await Branches.find().lean()
+    const images=await Images.findOne({_id:IMAGE_ID}).lean();
+
+    res.render('admin/login',{admin:true,categories1,categories2,images,branches})
+  } catch (error) {
+    console.log("error",error)
+  }
+    
   }
 
 exports.login=async(req,res)=>{
 
- 
+  const categories=await Categories.find().sort({createdAt:-1}).lean();
+  const midIndex = Math.ceil(categories.length / 2);
+  const categories1 = categories.slice(0, midIndex);
+const categories2 = categories.slice(midIndex);
+const branches = await Branches.find().lean()
+  const images=await Images.findOne({_id:IMAGE_ID}).lean();
   if(req.body.username===process.env.USER_NAME&&req.body.password===process.env.PASSWORD){
     const accessToken=await memberHelper.signAccessToken(process.env.USER_NAME)
     res.cookie("adminToken",accessToken,{httpOnly:true})
@@ -31,13 +50,13 @@ exports.login=async(req,res)=>{
   }else{
     if(req.body.username!==process.env.USER_NAME){
       const message='Please check your username..!';
-      res.render('admin/login',{adminLogin:true,message})
+      res.render('admin/login',{adminLogin:true,message, categories1,categories2,branches,images})
     }else if(req.body.password!==process.env.PASSWORD){
       const message='Your password is not matching';
-      res.render('admin/login',{adminLogin:true,message})
+      res.render('admin/login',{adminLogin:true,message,categories1,categories2,branches,images})
     }else{
       const message='Invalid credentials...Try again';
-      res.render('admin/login',{adminLogin:true,message})
+      res.render('admin/login',{adminLogin:true,message,categories1,categories2,branches,images})
     }
    
 
@@ -51,41 +70,23 @@ exports.dashboard= async(req,res)=>{
  try {
    const admin=req.admin;
    if(admin){
-    const users=await User.find().sort({createdAt:-1}).limit(10).lean()
-    const members=await Member.find().sort({createdAt:-1}).limit(10).lean()
-    const categories=await Categories.find().sort({count:-1}).limit(20).lean()
-    const posts=await Post.find().sort({createdAt:-1}).limit(10).lean()
-    const payments=await Payment.find().sort({createdAt:-1}).limit(15).lean()
-    const contact=await Contact.find().sort({createdAt:-1}).limit(10).lean()
+    const products = await Products.find().populate({
+      path:"category",
+      select:"name"
+    }).sort({createdAt:-1}).limit(10).lean()
+    const messages=await Messages.find().sort({createdAt:-1}).limit(10).lean();
    
     const count={
-      userCount:await User.count({}),
-      guideCount:await Member.count({}),
-      postCount:await Post.count({})
+      productCount:await Products.count({}),
+      categoryCount:await Categories.count({}),
+      partnerCount:await Partners.count({})
     }
-    const alert2=req.session.guideErr;
-    const alert1=req.session.touristErr;
-    const alert=req.session.postErr;
-    if(alert){
-      req.session.postErr=null
-      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert})
-
-    }if(alert1){
-     
-      req.session.touristErr=null
-      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert1})
-    }if(alert2){
-      req.session.guideErr=null;
-      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact,alert2})
-    }
-
- 
-
-      res.render('admin/dashboard',{admin:true,users,members,categories,posts,payments,count,contact})
+    
+      res.render('admin/dashboard',{admin:true,products,messages,count})
     
    
    }else{
-    res.render('admin/login',{adminLogin:true,message:"Please login to access your dashboard...!!"})
+    res.render('admin/login',{admin:true,message:"Please login to access your dashboard...!!"})
    }
  } catch (err) {
   res.render('404',{error:true,err})
@@ -105,7 +106,7 @@ exports.products=async(req,res)=>{
     // })
     // await imageData.save()
     const categories=await Categories.find().sort({count:-1}).lean();
-    const products = await Products.find().sort({createdAt:-1}).lean()
+    const products = await Products.find()
     .populate({
       path:"category",
       select:"name"
@@ -137,6 +138,28 @@ if(req.query.swalCreate){
   }
   
  }
+exports.userMessages=async(req,res)=>{
+  try {
+    const messages=await Messages.find().sort({createdAt:-1}).lean()
+
+  res.render('admin/messages',{admin:true,messages})
+  } catch (error) {
+    console.log("errror",error)
+    
+  }
+  
+ }
+exports.branches=async(req,res)=>{
+  try {
+    const branches=await Branches.find().sort({createdAt:-1}).lean()
+  res.render('admin/branches',{admin:true,branches})
+  
+  } catch (error) {
+    console.log("errror",error)
+    
+  }
+  
+ }
 exports.deleteCategory=async(req,res)=>{
   try {
     const categoryId = req.params.id;
@@ -151,6 +174,25 @@ exports.deleteCategory=async(req,res)=>{
       message = "Unable to find particular category in database.. please try after some time";
 
       res.render('admin/categories',{admin:true,categories,message})
+    }
+  } catch (error) {
+    console.error('Error deleting document:', error);
+  }
+  
+ }
+exports.deleteBranch=async(req,res)=>{
+  try {
+    const branchId = req.params.id;
+    const result = await Branches.findByIdAndDelete(branchId);
+    let message;
+    if (result) {
+      res.redirect('/admin/branches')
+    } else {
+      console.log('Document not found');
+      const branches = await Branches.find().sort({createdAt:-1}).lean();
+      message = "Unable to find particular category in database.. please try after some time";
+
+      res.render('admin/branches',{admin:true,branches,message})
     }
   } catch (error) {
     console.error('Error deleting document:', error);
@@ -262,6 +304,20 @@ exports.addNewCategory=async(req,res,next)=>{
   } catch (error) {
     console.log("errror",error)
     res.redirect('/admin/categories')
+  }
+
+ }
+exports.addNewBranch=async(req,res,next)=>{
+  try {
+   console.log("reqqqqBoddyd",req.body)
+  const branch = new Branches(req.body);
+  await branch.save()
+  res.redirect('/admin/branches')
+  // const categories =await Categories.find({}).sort({count:-1}).lean();
+  // res.render('admin/categories',{admin:true,message,categories})
+  } catch (error) {
+    console.log("errror",error)
+    res.redirect('/admin/branches')
   }
 
  }

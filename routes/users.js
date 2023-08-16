@@ -18,7 +18,7 @@ const {check,validationResult}=require('express-validator')
 const Post=require('../src/models/post')
 const page=require('../src/middleware/pagination')
 /* GET home page. */
-router.get('/',auth,controler.home);
+
 router.get('/show-all-members',auth,controler.showAllMembers);
 router.post('/show-all-members',auth,controler.showAllMembersPost);
 router.get('/loginMain',auth,controler.loginMain);
@@ -57,15 +57,20 @@ router.get('/dashboard/find-guide',auth,controler.findGuide);
 
 
 //landing pages route
-
+router.get('/',controler.home);
 router.get('/about',controler.about);
-router.get('/shop',controler.shop)
+router.get('/products',controler.products)
 router.get('/partners',controler.partners)
-router.get('/contact-us',controler.contactUs)
+router.get('/contactUs',controler.contactUs)
+router.get('/products/:id',controler.singleProducts);
+router.get('/categories/:id',controler.singleCategory);
+router.get('/categories',controler.products);
+router.post('/message',controler.messages);
+router.get('/downloadBrochure',controler.downloadBrochure);
+// router.get('/')
 
 
 router.get('/destination',auth,controler.destination);
-router.get('/destination-single/:id',auth,controler.destinationSingle);
 router.get('/destination-full/:id',auth,controler.destinationFull);
 router.get('/hotel',auth,controler.hotel);
 router.get('/blog',auth,controler.blog);

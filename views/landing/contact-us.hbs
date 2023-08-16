@@ -33,7 +33,7 @@
                                     <h4 class="dark-black-color pb-3 d-block">Contact us</h4>
                                         <p>For any feedbacks or improvements on our online store, please fill in this contact form. We will take a look and reply you within 24 hours. We always need your feedbacks to continuously leverage your shopping experience.</p>
                                 </div><!-- /section-title -->
-                                <ul class="social-link mt-20">
+                                {{!-- <ul class="social-link mt-20">
                                     <li class="primary-color d-dlock d-sm-inline-block pr-15">
                                         <span>Social Share:</span>
                                     </li>
@@ -52,34 +52,38 @@
                                     <li class="d-inline-block">
                                         <a class="primary-color text-center pr-0 d-inline-block transition-3" href="#"><i class="fab fa-youtube"></i></a>
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div><!-- /col -->
                         <div class="col-xl-8  col-lg-8  col-md-12 col-sm-12 col-12">
+                            {{>message}}
                             <div class="contact-form-right mt-55">
-                                <form action="#" class="text-center">
+                                <form action="/message" class="text-center" method="post">
                                     <h4 class=" text-left dark-black-color pb-15 d-block">Write to us</h4>
                                         <div class="row">
                                             <div class="col-xl-6  col-lg-6  col-md-6  col-sm-12 col-12">
                                                 <div class="name mb-20">
-                                                    <input type="text" class="form-control primary-bg2" name="name" id="name" placeholder="Name*" >
+                                                    <input type="text" class="form-control primary-bg2" name="name" id="name" placeholder="Name*" required >
                                                 </div>
                                             </div><!-- /col -->
                                             <div class="col-xl-6  col-lg-6  col-md-6  col-sm-12 col-12">
                                                 <div class="email mb-20">
-                                                    <input type="email" class="form-control primary-bg2" name="email" id="c-email" placeholder="Email*" >
+                                                    <input type="email" class="form-control primary-bg2" name="email" id="c-email" placeholder="Email*" required>
                                                 </div>
                                             </div><!-- /col -->
                                         </div><!-- /row -->
                                     <div class="subject mb-20">
-                                        <input type="text" class="form-control primary-bg2" name="subject" id="subject" placeholder="Subject*" >
+                                        <input type="text" class="form-control primary-bg2" name="subject" id="subject" placeholder="Subject*" required>
                                     </div>
                                     <div class="comment mb-25">
-                                        <textarea name="message" class="form-control primary-bg2" id="message" placeholder="Comments"></textarea>
+                                        <textarea name="message" class="form-control primary-bg2" id="message" placeholder="Comments" required></textarea>
                                     </div>
-                                    <a href="#" class="web-btn d-inline-block theme-bg white text-uppercase over-hidden position-relative border-theme02 ptb-10 pl-40 pr-40">
+                                    <button type="submit" class="buttonNoneStyle">
+ <a class="web-btn d-inline-block theme-bg white text-uppercase over-hidden position-relative border-theme02 ptb-10 pl-40 pr-40">
                                         Submit message<span class="pl-2"><i class="fas fa-long-arrow-alt-right"></i></span>
                                     </a>
+                                    </button>
+                                   
                                 </form>
                             </div>
                         </div><!-- /col -->
@@ -99,8 +103,9 @@
                                 </li>
                                 <li>
                                     <span class="white font600 pb-6">Our Branches</span>
-                                    <p class="mb-1 white">JEDDAH | RIYADH </p>
-                                    <p class="m-0 white">DAMMAM | KHOBAR </p>
+                                    {{#each branches}}
+                                    <p class="mb-1 white">{{this.name}}</p>
+                                    {{/each}}
                                 </li>
                             </ul>  
                         </div><!-- /col -->
@@ -111,8 +116,9 @@
                                 </li>
                                 <li>
                                     <span class="white d-block font600 pb-6">Phone Number</span>
-                                    <p class="mb-1 white">(+966) 12 661 0155</p>
-                                    <p class="m-0 white"> (+966) 55 886 5461</p>
+                                    {{#each branches}}
+                                    <p class="mb-1 white">{{this.mobile}}</p>
+                                    {{/each}}
                                 </li>
                             </ul>
                         </div><!-- /col -->
@@ -123,8 +129,9 @@
                                 </li>
                                 <li>
                                     <span class="white font600 pb-6">Email Support</span>
-                                    <p class="mb-1 white">info@nationalpals.com</p>
-                                    <p class="m-0 white">marketing@national.</p>
+                                    {{#each branches}}
+                                    <p class="mb-1 white">{{this.email}}</p>
+                                    {{/each}}
                                 </li>
                             </ul>
                         </div><!-- /col -->

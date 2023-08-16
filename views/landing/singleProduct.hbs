@@ -1,0 +1,215 @@
+<main>
+
+            <!-- ======slider-area-start=========================================== -->
+            <div class="slider-area over-hidden">
+                <div class="page-height d-flex align-items-center justify-content-center position-relative" data-background="/images/slider/page-bg.jpg">
+                    <div class="slider-shape position-absolute z-index1">
+                        <span class="slider-bg-round d-block"></span>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-xl-12  col-lg-12  col-md-12  col-sm-12 col-12">
+                            <div class="page-title b-l pt-100 text-center position-relative z-index1">
+                                <h2 class="text-capitalize font600 mb-10">Product Details</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb justify-content-center bg-transparent">
+                                    <li class="breadcrumb-item"><a class="primary-color" href="index.html">Home</a></li>
+                                    <li class="breadcrumb-item active text-capitalize" aria-current="page">Product</li>
+                                    </ol>
+                                </nav>
+                            </div><!-- /page title -->
+                        </div><!-- /col -->
+                    </div>
+                </div><!-- /single-slider -->
+            </div>
+            <!-- slider-area-end  -->
+
+            <!-- ====== shop page product-details-area-start================================ -->
+            <div class="product-details-area pro-top-thamb pro-bottom-thamb pt-100">
+                <div class="container">
+                    <!-- product-details-tab-area start -->
+                    <div class="product-details-content">
+                        <div class="single-product-tab-content tab-content" id="myTabContent2">
+                            <div class="row">
+                                <div class="col-xl-6  col-lg-6  col-md-11  col-sm-12 col-12">
+                                    <div class="product-left-img-tab mt-20">
+                                        <div class="tab-content width100 text-center position-relative" id="v-pills-tabContent1">
+                                            {{#each products.images}}
+                                            {{#if (ifIndexZero @ index)}}
+                                            <div class="tab-pane fade show active
+                                            " id={{idArray.[this]}} role="tabpanel" aria-labelledby={{labelledbyArray.[this]}}>
+                                               <div class="product-gallery-btn position-absolute right-site">
+                                                    <a href="/uploads/{{this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="/uploads/{{this}}" alt="image"></a> 
+                                                </div><!-- /product-gallery-btn -->
+                                                <div class="product-img">
+                                                    <img  class="width100 height100" src="/uploads/{{this}}" alt="product">
+                                                </div><!-- /product-img -->
+                                            </div>
+                                            {{else}}
+                                             <div class="tab-pane fade
+                                            " id={{idArray.[this]}} role="tabpanel" aria-labelledby={{labelledbyArray.[this]}}>
+                                               <div class="product-gallery-btn position-absolute right-site">
+                                                    <a href="/uploads/{{this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="/uploads/{{this}}" alt="image"></a> 
+                                                </div><!-- /product-gallery-btn -->
+                                                <div class="product-img">
+                                                    <img  class="width100 height100" src="/uploads/{{this}}" alt="product">
+                                                </div><!-- /product-img -->
+                                            </div>
+                                            {{/if}}
+                                            {{/each}}
+                                           
+
+
+                                            {{!-- <div class="tab-pane fade" id="v-pills-profile1" role="tabpanel" aria-labelledby="v-pills-profile-tab1">
+                                                <div class="product-gallery-btn position-absolute right-site">
+                                                    <a href="/images/product-details/prduct-detl-large-img2.jpg" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="images/product-details/prduct-detl-large-img2.jpg" alt=""></a> 
+                                                </div><!-- /product-gallery-btn -->
+                                                <div class="product-img"> 
+                                                    <img class="width100" src="/images/product-details/prduct-detl-large-img2.jpg" alt="">                                 
+                                                </div><!-- /product-img -->
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-messages1" role="tabpanel" aria-labelledby="v-pills-messages-tab1">
+                                                <div class="product-gallery-btn position-absolute right-site">
+                                                    <a href="/images/product-details/prduct-detl-large-img3.jpg" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="images/product-details/prduct-detl-large-img3.jpg" alt=""></a>
+                                                </div><!-- /product-gallery-btn -->
+                                                <div class="product-img"> 
+                                                    <img class="width100" src="/images/product-details/prduct-detl-large-img3.jpg" alt="">                                     
+                                                </div><!-- /product-img -->
+                                            </div> --}}
+                                        </div><!-- /tab-content -->
+                                        <div class="mlr--15">
+                                        <div class="nav product-tabs d-flex w-100" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
+                                            {{#each products.images}}
+                                            <a class="nav-link  show active" id="v-pills-home-tab1" data-toggle="pill" href={{idArray.[this]}} role="tab" aria-controls={{idArray.[this]}} aria-selected="true">
+                                                <img class="product-thumbnail w-100" src="/uploads/{{this}}" alt="Image">
+                                            </a>
+                                            {{/each}}
+                                            {{!-- <a class="nav-link " id="v-pills-profile-tab1" data-toggle="pill" href="#v-pills-profile1" role="tab" aria-controls="v-pills-profile1" aria-selected="false">
+                                                <img class="product-thumbnail w-100" src="/images/product-details/prduct-detl-thamb2.jpg" alt="">
+                                            </a>
+                                            <a class="nav-link" id="v-pills-messages-tab1" data-toggle="pill" href="#v-pills-messages1" role="tab" aria-controls="v-pills-messages1" aria-selected="false">
+                                                <img class="product-thumbnail w-100" src="/images/product-details/prduct-detl-thamb3.jpg" alt="">
+                                            </a> --}}
+                                        </div><!-- /nav product-tabs -->
+                                        </div>
+                                    </div><!-- /product-left-img-tab -->
+                                </div><!-- /col -->
+                                <div class="col-xl-5  col-lg-6  col-md-11  col-sm-12 col-12">
+                                    <div class="product-view-info mt-50 pl-35">
+                                        <div class="product-left-img-info">
+                                            <h3>{{products.name}}</h3>
+                                            
+                                            <div class="p-info-text pr-55 mt-5">
+                                                <p class="gray-color2">{{products.usage}}</p>
+                                                
+                                            </div>
+                                            <div class="all-info d-sm-flex align-items-center mt-35">
+                                               <img class="width100 height100" src="/uploads/{{products.sizeChart.[0]}}" alt="sizeChart">
+                                            </div>
+                                            
+                                            <ul class="review-cat review-cat2  d-sm-flex align-items-center pb-20">
+                                                <li class="mb-1 mb-2 mt-4 mr-6 d-inline-block position-static">
+                                                    <span class="cat-title dark-black-color font600">Category :</span>
+                                                </li>
+                                                <li class="mr-6 mb-2 mt-4 d-inline-block position-relative">
+                                                    <a href="/categories/{{products.category._id}}" class="gray-color2 font600">{{products.category.name}}</a>
+                                                </li>
+                                               
+                                            </ul><!-- /review-cat -->
+                                            
+                                        </div>
+                                    </div>
+                                </div><!-- /col -->
+                            </div><!-- /row -->
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-11  col-lg-12  col-md-12  col-sm-12 col-12">
+                                <!-- ====== product-review-area-start============ --> 
+                                <div class="product-view-tab-area product-view-tab-area2 mt-40 pr-35">
+                                    <nav class="d-flex shop-b-border2 pb-18 mr-245"> 
+                                        <div class="nav review-tabs product-view-tab" id="nav-tab" role="tablist">
+                                            <a class="nav-item nav-link primary-color position-relative active pl-0 pr-70 mr-45 pb-1" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Description</a>
+                                            <a class="nav-item nav-link primary-color position-relative pl-0 pr-70 mr-45 pb-1" id="nav-add-tab" data-toggle="tab" href="#nav-add" role="tab" aria-controls="nav-add" aria-selected="false">Additional information</a>
+                                           
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content mt-30" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                            <div class="describe-area">
+                                                <div class="product-details-text pr-10 mb-60">
+                                                    <p class="gray-color2 dc-text1 pb-6">
+                                                      {{products.description}}
+                                                    </p>
+                                                    {{!-- <p class="gray-color2">
+                                                        <span class="theme-color pr-10"><i class="far fa-check-circle"></i></span>
+                                                        {{products.description}}
+                                                    </p> --}}
+                                                   
+                                                </div> <!-- /product-details-text -->
+                                                
+                                            </div>
+                                        </div><!-- /tab-pane1 -->                  
+                                        <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add">
+                                                <div class="additional-information mt-50 h2-gray-background pt-40 pl-50 pr-50 pb-50 mb-120">
+                                                    <div class="row">
+                                                        <div class="col-xl-12">
+                                                            <h5 class="title mb-20 font600">Additional information</h5>
+                                                            <table class="table border mt-25 table-responsive-sm">
+                                                                <tbody>
+                                                                    <tr class="add-color-area aditional-info border-bottom border-top ">
+                                                                        <td class="tbl-title pl-5">
+                                                                            <h6 class="add-title">Color</h6>
+                                                                        </td>
+                                                                        <td class="tbl-content">
+                                                                            <ul class="add-color d-flex">
+                                                                                <li>{{products.color}}</li>
+                                                                                
+                                                                            </ul>
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                    <tr class="add-color-area aditional-info border-bottom border-top">
+                                                                        <td class="tbl-title pl-5">
+                                                                            <h6 class="add-title">Dimensions</h6>
+                                                                        </td>
+                                                                        <td class="tbl-content">
+                                                                            <ul class="add-color d-flex">
+                                                                                <li>{{products.dimention}}</li>
+                                                                            </ul>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="add-brand-area aditional-info border-bottom h2-gray-background">
+                                                                        <td class="tbl-title pl-5">
+                                                                            <h6 class="add-title">Material</h6>
+                                                                        </td>
+                                                                        <td class="tbl-content">
+                                                                        <ul class="add-color d-flex">
+                                                                                <li>{{products.material}}</li>
+                                                                               
+                                                                            </ul>
+                                                                        </td>    
+                                                                    </tr>
+                                                                    
+                                                                    
+                                                                </tbody>
+                                                            </table>
+                                                        </div><!-- /col -->
+                                                    </div><!-- /row -->
+                                                </div>
+                                        </div><!-- /tab-2 -->
+                                        
+                                    </div> 
+                                </div><!-- product-review-area end -->
+                            </div><!-- /col -->
+                        </div><!-- /row -->
+                    </div><!-- /product-content -->
+                </div><!-- /container -->
+            </div>
+            <!-- product-area-end  --> 
+
+
+            <!-- ====== brand-logo-area-start ========================================= -->
+             {{>partners}}
+            <!-- brand-logo-area-end  -->
+
+
+        </main>
