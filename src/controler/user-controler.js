@@ -89,7 +89,7 @@ const branches = await Branches.find().lean()
     const branches = await Branches.find().lean()
     const images=await Images.findOne({_id:IMAGE_ID}).lean();
     const partners=await Partners.find().lean();
-    const productsPerPage = 2;
+    const productsPerPage = 10;
     const currentPage = parseInt(req.query.page) || 1; // Get current page from query parameter
     const startIndex = (currentPage - 1) * productsPerPage;
     const products = await Products.find()
@@ -168,7 +168,7 @@ try {
 const branches = await Branches.find().lean()
     const images=await Images.findOne({_id:IMAGE_ID}).lean();
     const partners=await Partners.find().lean();
-    const productsPerPage = 2;
+    const productsPerPage = 10;
     const currentPage = parseInt(req.query.page) || 1; // Get current page from query parameter
   const startIndex = (currentPage - 1) * productsPerPage;
     const products = await Products.find({category:categoryId})

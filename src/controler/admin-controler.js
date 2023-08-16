@@ -58,7 +58,7 @@ const branches = await Branches.find().lean()
 } 
 exports.logout=(req,res)=>{
  res.clearCookie('adminToken');
- res.render('admin/login',{adminLogin:true,message:"logout successfully...!!"})
+ res.render('admin/login',{admin:true,message:"logout successfully...!!"})
 }
 exports.dashboard= async(req,res)=>{
  try {
