@@ -31,6 +31,7 @@ const { data } = require('jquery');
 
   
 var app = express();        
+app.set('trust proxy', 1);
 app.use(cors())
 //public folders path
 // const publicPath = path.join(__dirname,"/public");
