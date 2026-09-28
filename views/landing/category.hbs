@@ -3,7 +3,7 @@
     <!-- ======slider-area-start=========================================== -->
     <div class="slider-area over-hidden">
         <div class="page-height d-flex align-items-center justify-content-center position-relative"
-            data-background="/uploads/{{images.productHeader}}">
+            data-background="{{imageUrl images.productHeader}}">
             <div class="slider-shape position-absolute z-index1">
                 <span class="slider-bg-round d-block"></span>
             </div>
@@ -63,7 +63,7 @@
                                             <ul class="single-product d-flex align-items-center mb-20">
                                                 <li class="mr-15">
                                                     <a class="d-block" href="/products/{{this._id}}">
-                                                        <img class="imagePreview" src="/uploads/{{this.images.[0]}}"
+                                                        <img class="imagePreview" src="{{imageUrl this.images.[0]}}"
                                                             alt="95X95">
                                                     </a>
                                                 </li>
@@ -107,13 +107,13 @@
                                 {{#each visibleProducts}}
                                 <div class="col-6 col-md-4 col-lg-3">
                                     {{!-- <a href="/partners" class="d-block p-1">
-                                        <img class="width100 height100" src="/uploads/{{this.images.[0]}}" alt="">
+                                        <img class="width100 height100" src="{{imageUrl this.images.[0]}}" alt="">
                                     </a> --}}
                                     <div class="single-product mb-35">
                                         <div class="single-product-img position-relative over-hidden">
 
                                             <a class="position-relative d-block" href="/products/{{this._id}}">
-                                                <img class="width100 height100" src="/uploads/{{this.images.[0]}}"
+                                                <img class="width100 height100" src="{{imageUrl this.images.[0]}}"
                                                     alt="product">
                                             </a>
                                             <ul class="product-action d-flex position-absolute transition-3">

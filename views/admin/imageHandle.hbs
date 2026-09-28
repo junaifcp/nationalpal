@@ -22,7 +22,6 @@
       <div class="charts-card">
         <h2 class="chart-title">All Images</h2>
         {{!-- <div id="bar-chart"></div> --}}
-        <form id="image-form" method="post" enctype="multipart/form-data"> 
         <table class="table table-dark">
           <thead>
             <tr>
@@ -39,13 +38,20 @@
               <th scope="row">1</th>
               <td>Home header</td>
               <td>
-                <img src="/uploads/{{images.homeHeader}}" class="imagePreviewTable" alt="not-available">
+                <img src="{{imageUrl images.homeHeader}}" class="imagePreviewTable" alt="not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeHeader">upload</span>
+                <form action="/admin/uploadImage/homeHeader" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.homeHeader}}
+                <a class="deleteButton" href="/admin/deleteImage/homeHeader" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
               {{!-- <td>
                 <button type="button" class="deleteButton">
@@ -57,26 +63,40 @@
               <th scope="row">2</th>
               <td>Products Header</td>
               <td>
-                <img src="/uploads/{{images.productHeader}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.productHeader}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="productHeader">upload</span>
+                <form action="/admin/uploadImage/productHeader" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.productHeader}}
+                <a class="deleteButton" href="/admin/deleteImage/productHeader" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>About Header</td>
               <td>
-                <img src="/uploads/{{images.aboutHeader}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.aboutHeader}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="aboutHeader">upload</span>
+                <form action="/admin/uploadImage/aboutHeader" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.aboutHeader}}
+                <a class="deleteButton" href="/admin/deleteImage/aboutHeader" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
               
             </tr>
@@ -84,161 +104,244 @@
               <th scope="row">4</th>
               <td>Contact Header</td>
               <td>
-                <img src="/uploads/{{images.contactHeader}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.contactHeader}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="contactHeader">upload</span>
+                <form action="/admin/uploadImage/contactHeader" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.contactHeader}}
+                <a class="deleteButton" href="/admin/deleteImage/contactHeader" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">5</th>
               <td>Home Slider1 (677 X 474)</td>
               <td>
-                <img src="/uploads/{{images.homeSlider1}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.homeSlider1}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeSlider1">upload</span>
+                <form action="/admin/uploadImage/homeSlider1" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.homeSlider1}}
+                <a class="deleteButton" href="/admin/deleteImage/homeSlider1" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">6</th>
               <td>Home Slider2 (677 X 474)</td>
               <td>
-                <img src="/uploads/{{images.homeSlider2}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.homeSlider2}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeSlider2">upload</span>
+                <form action="/admin/uploadImage/homeSlider2" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.homeSlider2}}
+                <a class="deleteButton" href="/admin/deleteImage/homeSlider2" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">7</th>
               <td>Logo Main</td>
               <td>
-                <img src="/uploads/{{images.logoMain}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.logoMain}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="logoMain">upload</span>
+                <form action="/admin/uploadImage/logoMain" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.logoMain}}
+                <a class="deleteButton" href="/admin/deleteImage/logoMain" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">8</th>
               <td>Logo Small</td>
               <td>
-                <img src="/uploads/{{images.logoSmall}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.logoSmall}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="logoSmall">upload</span>
+                <form action="/admin/uploadImage/logoSmall" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.logoSmall}}
+                <a class="deleteButton" href="/admin/deleteImage/logoSmall" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">8</th>
               <td>Newsletter Background (1920 X 225) </td>
               <td>
-                <img src="/uploads/{{images.newsLetterBg}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.newsLetterBg}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="newsLetterBg">upload</span>
+                <form action="/admin/uploadImage/newsLetterBg" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.newsLetterBg}}
+                <a class="deleteButton" href="/admin/deleteImage/newsLetterBg" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">9</th>
               <td>Home banner one (950 X 457) </td>
               <td>
-                <img src="/uploads/{{images.homeBannerOne}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.homeBannerOne}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeBannerOne">upload</span>
+                <form action="/admin/uploadImage/homeBannerOne" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.homeBannerOne}}
+                <a class="deleteButton" href="/admin/deleteImage/homeBannerOne" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">10</th>
               <td>Home banner two (950 X 457) </td>
               <td>
-                <img src="/uploads/{{images.homeBannerTwo}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.homeBannerTwo}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="homeBannerTwo">upload</span>
+                <form action="/admin/uploadImage/homeBannerTwo" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.homeBannerTwo}}
+                <a class="deleteButton" href="/admin/deleteImage/homeBannerTwo" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">11</th>
               <td>Navbar products dropdown (300 X 300) </td>
               <td>
-                <img src="/uploads/{{images.navDropBg}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.navDropBg}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="navDropBg">upload</span>
+                <form action="/admin/uploadImage/navDropBg" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.navDropBg}}
+                <a class="deleteButton" href="/admin/deleteImage/navDropBg" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">12</th>
               <td>About us main image (570 X 750) </td>
               <td>
-                <img src="/uploads/{{images.aboutUsMain}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.aboutUsMain}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="aboutUsMain">upload</span>
+                <form action="/admin/uploadImage/aboutUsMain" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.aboutUsMain}}
+                <a class="deleteButton" href="/admin/deleteImage/aboutUsMain" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">13</th>
               <td>About us wall (1920 X 960) </td>
               <td>
-                <img src="/uploads/{{images.aboutUsWall}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.aboutUsWall}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="aboutUsWall">upload</span>
+                <form action="/admin/uploadImage/aboutUsWall" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.aboutUsWall}}
+                <a class="deleteButton" href="/admin/deleteImage/aboutUsWall" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
             <tr>
               <th scope="row">14</th>
               <td>About us video background (1920 X 650) </td>
               <td>
-                <img src="/uploads/{{images.aboutUsVideoBg}}" class="imagePreviewTable" alt="Not-available">
+                <img src="{{imageUrl images.aboutUsVideoBg}}" class="imagePreviewTable" alt="Not-available">
               </td>
               <td>
-                <input type="file" name="images" id="formFileImage" class="form-control-dark" single> 
-                <button type="submit" class="deleteButton">
-                  <span class="material-icons-outlined deleteCategory object-link" data-key="aboutUsVideoBg">upload</span>
+                <form action="/admin/uploadImage/aboutUsVideoBg" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" class="form-control-dark" accept="image/*" required>
+                <button type="submit" class="deleteButton" aria-label="Upload">
+                  <span class="material-icons-outlined deleteCategory">upload</span>
                 </button>
+              </form>
+                {{#if images.aboutUsVideoBg}}
+                <a class="deleteButton" href="/admin/deleteImage/aboutUsVideoBg" onclick="return confirm('Delete this image?')" aria-label="Delete">
+                  <span class="material-icons-outlined deleteCategory">delete</span>
+                </a>
+                {{/if}}
               </td>
             </tr>
           </tbody>
         </table>
-        </form>
       </div>
 
     </div>
@@ -272,15 +375,4 @@
     
   }
 
-  const objectLinks = document.querySelectorAll('.object-link');
-const form = document.getElementById('image-form'); 
-console.log("Objectlinkd",objectLinks)
-objectLinks.forEach(link => {
-  link.addEventListener('click', (event) => {
-    event.preventDefault();
-    const key = link.getAttribute('data-key');
-    form.action = `/admin/uploadImage/${key}`; // Update the form's action URL
-    form.submit(); // Submit the form to navigate to the updated URL
-  });
-});
 </script>

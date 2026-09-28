@@ -38,20 +38,20 @@
                                             <div class="tab-pane fade show active
                                             " id={{idArray.[this]}} role="tabpanel" aria-labelledby={{labelledbyArray.[this]}}>
                                                <div class="product-gallery-btn position-absolute right-site">
-                                                    <a href="/uploads/{{this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="/uploads/{{this}}" alt="image"></a> 
+                                                    <a href="{{imageUrl this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="{{imageUrl this}}" alt="image"></a> 
                                                 </div><!-- /product-gallery-btn -->
                                                 <div class="product-img">
-                                                    <img  class="width100 height100" src="/uploads/{{this}}" alt="product">
+                                                    <img  class="width100 height100" src="{{imageUrl this}}" alt="product">
                                                 </div><!-- /product-img -->
                                             </div>
                                             {{else}}
                                              <div class="tab-pane fade
                                             " id={{idArray.[this]}} role="tabpanel" aria-labelledby={{labelledbyArray.[this]}}>
                                                <div class="product-gallery-btn position-absolute right-site">
-                                                    <a href="/uploads/{{this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="/uploads/{{this}}" alt="image"></a> 
+                                                    <a href="{{imageUrl this}}" class="zoom-gallery dark-black-color bg-white d-block m-2" data-fancybox="images" ><i class="fas fa-compress"></i><img class="width100 d-none" src="{{imageUrl this}}" alt="image"></a> 
                                                 </div><!-- /product-gallery-btn -->
                                                 <div class="product-img">
-                                                    <img  class="width100 height100" src="/uploads/{{this}}" alt="product">
+                                                    <img  class="width100 height100" src="{{imageUrl this}}" alt="product">
                                                 </div><!-- /product-img -->
                                             </div>
                                             {{/if}}
@@ -80,7 +80,7 @@
                                         <div class="nav product-tabs d-flex w-100" id="v-pills-tab1" role="tablist" aria-orientation="vertical">
                                             {{#each products.images}}
                                             <a class="nav-link  show active" id="v-pills-home-tab1" data-toggle="pill" href={{idArray.[this]}} role="tab" aria-controls={{idArray.[this]}} aria-selected="true">
-                                                <img class="product-thumbnail w-100" src="/uploads/{{this}}" alt="Image">
+                                                <img class="product-thumbnail w-100" src="{{imageUrl this}}" alt="Image">
                                             </a>
                                             {{/each}}
                                             {{!-- <a class="nav-link " id="v-pills-profile-tab1" data-toggle="pill" href="#v-pills-profile1" role="tab" aria-controls="v-pills-profile1" aria-selected="false">
@@ -103,7 +103,7 @@
                                                 
                                             </div>
                                             <div class="all-info d-sm-flex align-items-center mt-35">
-                                               <img class="width100 height100" src="/uploads/{{products.sizeChart.[0]}}" alt="sizeChart">
+                                               <img class="width100 height100" src="{{imageUrl products.sizeChart.[0]}}" alt="sizeChart">
                                             </div>
                                             
                                             <ul class="review-cat review-cat2  d-sm-flex align-items-center pb-20">

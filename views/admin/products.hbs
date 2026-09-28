@@ -326,7 +326,7 @@ imageChartPreviewContainerEdit.innerHTML = "";
       // Generate image preview elements
       for (const imageName of productData.images) {
         const img = document.createElement('img');
-        img.src = `/uploads/${imageName}`; // Assuming your images are stored in the /public/uploads folder
+        img.src = imageName.startsWith('http') ? imageName : `{{s3PublicBase}}/${imageName}`;
         img.classList.add('imagePreview');
         editImagePreviewContainer.appendChild(img);
       }
@@ -335,7 +335,8 @@ imageChartPreviewContainerEdit.innerHTML = "";
       hiddenChartImage.value = productData.sizeChart;
       
         const img = document.createElement('img');
-        img.src = `/uploads/${productData.sizeChart}`; // Assuming your images are stored in the /public/uploads folder
+        const chartImage = Array.isArray(productData.sizeChart) ? productData.sizeChart[0] : productData.sizeChart;
+        img.src = String(chartImage).startsWith('http') ? chartImage : `{{s3PublicBase}}/${chartImage}`;
         img.classList.add('imageChartPreview');
         imageChartPreviewContainerEdit.appendChild(img);
       

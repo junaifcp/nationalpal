@@ -10,6 +10,7 @@ const cors=require('cors');
 const methodOverride = require('method-override');
 var helpers = require('handlebars-helpers')();
 const auth=require('./src/middleware/userAuth')
+const { publicUrl, publicBase } = require('./src/services/s3')
 // const {validator} = require('express-validator');
 
 // loading posts for pagination
@@ -77,6 +78,12 @@ var handlebars = require('express-handlebars').create({
      },
      toJSON : function(object) {
       return JSON.stringify(object);
+    },
+    JSONstringify: function(object) {
+      return JSON.stringify(object);
+    },
+    imageUrl: function(key) {
+      return publicUrl(key);
     },
     
     date:function(date) {
@@ -218,6 +225,12 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  res.locals.s3PublicBase = publicBase();
+  res.locals.siteUrl = `${req.protocol}://${req.get('host')}`;
+  res.locals.canonicalPath = req.path || '/';
+  next();
+});
 app.use('uploads',express.static(path.join(__dirname,'uploads')))
 // app.use(express.static(imagesPath))
 // app.use(express.static(siteImages))

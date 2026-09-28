@@ -8,10 +8,28 @@ const Products=require('../../src/models/products');
 const Messages=require('../../src/models/userMessages');
 const mongoose=require('mongoose');
 const { ObjectId } = require('mongodb');
+const jwt = require('jsonwebtoken');
 const Swal = require('sweetalert2')
-const fs = require('fs');
-const path = require('path');
 const {IMAGE_ID}=require("../../public/data/images")
+const { uploadImage, deleteImage, FALLBACK_IMAGE } = require('../services/s3')
+
+const SITE_IMAGE_KEYS = [
+  'homeHeader',
+  'productHeader',
+  'aboutHeader',
+  'contactHeader',
+  'homeSlider1',
+  'homeSlider2',
+  'logoMain',
+  'logoSmall',
+  'newsLetterBg',
+  'homeBannerOne',
+  'homeBannerTwo',
+  'navDropBg',
+  'aboutUsMain',
+  'aboutUsWall',
+  'aboutUsVideoBg',
+];
 
 exports.admin=async(req, res)=>{
   try {
@@ -38,7 +56,7 @@ const categories2 = categories.slice(midIndex);
 const branches = await Branches.find().lean()
   const images=await Images.findOne({_id:IMAGE_ID}).lean();
   if(req.body.username===process.env.USER_NAME&&req.body.password===process.env.PASSWORD){
-    const accessToken=await memberHelper.signAccessToken(process.env.USER_NAME)
+    const accessToken=jwt.sign({ username: process.env.USER_NAME, admin: true }, process.env.SECRET_KEY, { expiresIn: '1d' })
     res.cookie("adminToken",accessToken,{httpOnly:true})
     res.redirect('/admin/dashboard')
   }else{
@@ -217,26 +235,14 @@ exports.deleteProduct=async(req,res)=>{
     const productId = req.params.id;
     
     const result = await Products.findByIdAndDelete(productId);
-    const imageFilenames = result.images;
-    const ROOT_DIR = path.resolve(__dirname, '../../');
-    console.log("ROOT_DIR>>>>>>>",ROOT_DIR)
-    if(imageFilenames.length){
-        // Delete the images from the public/uploads folder
-    imageFilenames.forEach(filename => {
-      if(filename !== "uncategorized20232022.jpg"){
-        const imagePath = path.join(ROOT_DIR, 'public', 'uploads', filename);
-        if (fs.existsSync(imagePath)) {
-          fs.unlinkSync(imagePath); // Delete the image file
-        }
-      }
-     
-    });
-    }
-    await Categories.findOneAndUpdate({_id:result.category},{
-      $inc:{count:-1}
-  });
-    let message;
     if (result) {
+      const imageFilenames = [...(result.images || []), ...(result.sizeChart || [])];
+      for (const filename of imageFilenames) {
+        await deleteImage(filename);
+      }
+      await Categories.findOneAndUpdate({_id:result.category},{
+        $inc:{count:-1}
+      });
       console.log('Document deleted:', result);
       res.redirect('/admin/products')
     } else {
@@ -248,7 +254,7 @@ exports.deleteProduct=async(req,res)=>{
         select:"name"
       })
       .sort({createdAt:-1}).lean();
-      message = "Unable to find particular product in database.. please try after some time";
+      const message = "Unable to find particular product in database.. please try after some time";
 
       res.render('admin/products',{admin:true,categories,message,products})
     }
@@ -282,9 +288,9 @@ exports.addNewCategory=async(req,res,next)=>{
   try {
    console.log("reqqqqBoddyd",req.body)
    const files=req.files;
-   console.log("files are",files[0])
+   console.log("files are",files && files[0])
    const {name,description}=req.body;
-   let imageName=files[0].filename?files[0].filename : "uncategorized20232022.jpg"
+   let imageName = files && files[0] ? await uploadImage(files[0]) : FALLBACK_IMAGE
   const category = new Categories({
     name,
     description,
@@ -319,9 +325,9 @@ exports.addNewPartner=async(req,res,next)=>{
   try {
    console.log("reqqqqBoddyd",req.body)
    const files=req.files;
-   console.log("files are",files[0])
+   console.log("files are",files && files[0])
    const {name,description}=req.body;
-   let imageName=files[0].filename?files[0].filename : "uncategorized20232022.jpg"
+   let imageName = files && files[0] ? await uploadImage(files[0]) : FALLBACK_IMAGE
   const partner = new Partners({
     name,
     description,
@@ -339,10 +345,16 @@ exports.addNewPartner=async(req,res,next)=>{
  }
 exports.uploadImage=async(req,res,next)=>{
   try {
-   const files=req.files;
+   const files=req.files || [];
    const imageKey=req.params.id;
-   console.log("files are",files)
-   const imageName = files[0].filename;
+   if (!SITE_IMAGE_KEYS.includes(imageKey) || !files[0]) {
+     return res.redirect('/admin/images');
+   }
+   const current = await Images.findById(IMAGE_ID).lean();
+   if (current && current[imageKey]) {
+     await deleteImage(current[imageKey]);
+   }
+   const imageName = await uploadImage(files[0]);
    const updateObject = {};
     updateObject[imageKey] = imageName;
    await Images.findOneAndUpdate({_id:IMAGE_ID},{
@@ -351,9 +363,29 @@ exports.uploadImage=async(req,res,next)=>{
    res.redirect("/admin/images")
   } catch (error) {
     console.log("errror",error)
+    res.redirect('/admin/images')
   }
 
  }
+exports.deleteSiteImage=async(req,res)=>{
+  try {
+    const imageKey = req.params.id;
+    if (!SITE_IMAGE_KEYS.includes(imageKey)) {
+      return res.redirect('/admin/images');
+    }
+    const current = await Images.findById(IMAGE_ID).lean();
+    if (current && current[imageKey]) {
+      await deleteImage(current[imageKey]);
+      const unset = {};
+      unset[imageKey] = '';
+      await Images.findByIdAndUpdate(IMAGE_ID, { $unset: unset });
+    }
+    res.redirect('/admin/images');
+  } catch (error) {
+    console.log("errror",error)
+    res.redirect('/admin/images');
+  }
+}
 exports.addNewProduct=async(req,res,next)=>{
   try {
    console.log("reqqqqBoddyd",req.body)
@@ -362,19 +394,19 @@ exports.addNewProduct=async(req,res,next)=>{
    const {name,category,description,color,dimention,material,usage} = req.body;
    let images=[];
    let sizeChart=[];
-   if(files && files['image'] || files['images']){
-    files['image'].forEach((element,index) =>{
-      if(index<1){
-        sizeChart.push(element.filename)
+   if(files && (files['image'] || files['images'])){
+    if(files['image']){
+      for (const element of files['image'].slice(0, 1)) {
+        sizeChart.push(await uploadImage(element))
       }
-    })
-    files['images'].forEach((element,index) => {
-      if(index<3){
-        images.push(element.filename);
+    }
+    if(files['images']){
+      for (const element of files['images'].slice(0, 3)) {
+        images.push(await uploadImage(element))
       }
-    });
+    }
    }else{
-    images.push("uncategorized20232022.jpg")
+    images.push(FALLBACK_IMAGE)
    }
 
    const product = new Products({
@@ -412,20 +444,15 @@ exports.updateProduct=async(req,res,next)=>{
    console.log("files areee>>>",files)
    let sizeChart=[];
    let images=[];
-   if(files !== null && files.image){
-    files.image.forEach((element,index) =>{
-      if(index<1){
-        sizeChart.push(element.filename)
-      }
-    })
-    
+   if(files && files.image){
+    for (const element of files.image.slice(0, 1)) {
+      sizeChart.push(await uploadImage(element))
+    }
    }
-   if(files !== null && files.images){
-    files.images.forEach((element,index) => {
-      if(index<3){
-        images.push(element.filename);
-      }
-    });
+   if(files && files.images){
+    for (const element of files.images.slice(0, 3)) {
+      images.push(await uploadImage(element))
+    }
    }
 if(name){
   product.name=name;
@@ -454,10 +481,10 @@ if(dimention){
 if(usage){
   product.usage=usage
 }
-if(files.image && sizeChart.length){
+if(files && files.image && sizeChart.length){
   product.sizeChart = sizeChart;
 }
-if(files.images && images.length){
+if(files && files.images && images.length){
   product.images = images;
 }
 await product.save();

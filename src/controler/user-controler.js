@@ -42,7 +42,7 @@ const branches = await Branches.find().lean()
   } else {
     console.log('Random documents:', products);
    
-    res.render('index',{client:true,products,categories,branches,images,partners,latestProducts,categories1,categories2});
+    res.render('index',{client:true,products,categories,branches,images,partners,latestProducts,categories1,categories2,pageTitle:'National PALS Trading Co. | Electrical Conduit & Fittings',pageDescription:'National PALS Trading Co. supplies electrical conduit, fittings, and telecom products across Saudi Arabia.'});
   }
 });
   } catch (error) {
@@ -66,7 +66,7 @@ const branches = await Branches.find().lean()
     const images=await Images.findOne({_id:IMAGE_ID}).lean();
     const partners=await Partners.find().lean();
 
-  res.render('landing/about',{categories1,categories2,branches,images,partners})
+  res.render('landing/about',{categories1,categories2,branches,images,partners,pageTitle:'About Us | National PALS Trading Co.',pageDescription:'National PALS has supplied electrical and telecom products across Saudi Arabia since 2010, with branches and stocked warehouses in the main cities.'})
     } catch (error) {
       res.render('404',{error:true,err})
     }
@@ -121,8 +121,9 @@ const branches = await Branches.find().lean()
         prevPage:currentPage-1,
         nextPage:currentPage+1,
         categories1,
-        categories2
-        
+        categories2,
+        pageTitle:'Products | National PALS Trading Co.',
+        pageDescription:'Browse electrical conduit, fittings, and related products from National PALS Trading Co.'
       })
     } catch (error) {
       console.log("errror is",error)
@@ -184,6 +185,7 @@ const branches = await Branches.find().lean()
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     console.log(">>>>>>pages",pages)
 
+    const categoryName = (categories.find((item) => String(item._id) === String(categoryId)) || {}).name;
 
       res.render('landing/products',{visibleProducts,
         totalProducts,
@@ -200,7 +202,9 @@ const branches = await Branches.find().lean()
         hasPrev:currentPage>1,
         hasNext:currentPage<totalPages,
         prevPage:currentPage-1,
-        nextPage:currentPage+1
+        nextPage:currentPage+1,
+        pageTitle: categoryName ? `${categoryName} | National PALS Trading Co.` : 'Products | National PALS Trading Co.',
+        pageDescription:'Browse electrical conduit and fittings by category from National PALS Trading Co.'
         
       })
     } catch (error) {
@@ -236,7 +240,10 @@ const branches = await Branches.find().lean()
       partners,
       products,
       idArray,
-      labelledbyArray
+      labelledbyArray,
+      pageTitle: products && products.name ? `${products.name} | National PALS Trading Co.` : 'Product | National PALS Trading Co.',
+      pageDescription: products && products.description ? products.description : 'Electrical conduit and fittings from National PALS Trading Co.',
+      metaImage: products && products.images && products.images[0] ? products.images[0] : ''
     })
     } catch (err) {
       res.render('404',{error:true,err})
@@ -251,7 +258,7 @@ const branches = await Branches.find().lean()
       const images=await Images.findOne({_id:IMAGE_ID}).lean();
       const partners=await Partners.find().lean();
 
-      res.render('landing/partners',{branches,categories1,categories2,images,partners})
+      res.render('landing/partners',{branches,categories1,categories2,images,partners,pageTitle:'Partners | National PALS Trading Co.',pageDescription:'Partners and suppliers of National PALS Trading Co. for electrical conduit and fittings.'})
   }
   exports.contactUs=async(req,res)=>{
 
@@ -267,7 +274,7 @@ const branches = await Branches.find().lean()
   const categories2 = categories.slice(midIndex);
   const branches = await Branches.find().lean()
   const images=await Images.findOne({_id:IMAGE_ID}).lean();
-      res.render('landing/contact-us',{categories1,categories2,branches,images,message})
+      res.render('landing/contact-us',{categories1,categories2,branches,images,message,pageTitle:'Contact Us | National PALS Trading Co.',pageDescription:'Contact National PALS Trading Co. for electrical conduit, fittings, and product enquiries.'})
     } catch (error) {
       res.redirect('/')
     }
